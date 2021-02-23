@@ -1,33 +1,34 @@
-\section{Thoretical Analysis}
+\section{Theoretical Analysis}
 \label{sec:analysis}
 
-In this section the circuit shown in Figure~\ref{fig:rc} is analysed
-theoretically in terms of its time and frequency responses.
+In this section, the circuit shown in Figure~\ref{fig:rc} is analysed
+theoretically, in terms of its time and frequency responses.
 
 \section{Time response}
 
 The circuit consists of a single V-R-C loop where a current $i(t)$ circulates. The
-voltage source $v_I(t)$ drives its input and the output voltage $v_O(t)$ is taken from
-the capacitor terminals. Applying the Kirchof Voltage Law (KVL), a single
-equation for the single loop in the cicuit can be written as
+voltage source $v_I(t)$ drives its input, and the output voltage $v_O(t)$ is taken from
+the capacitor terminals. Applying the Kirchhoff Voltage Law (KVL), a single
+equation for the single loop in the circuit can be written as
 
 \begin{equation}
   Ri(t) + v_O(t) = v_I(t).
   \label{eq:kvl}
 \end{equation}
 
-Because $V_O$ is the current $i$ can be experessed by 
+Because $v_O$ is the voltage between capacitor C's plates, it is related to the
+current $i$ by
 \begin{equation}
   i(t) = C\frac{dv_O}{dt}.
 \end{equation}
 
-Hence, Equation~\ref{eq:kvl} can be rewritten as
+Hence, Equation~(\ref{eq:kvl}) can be rewritten as
 \begin{equation}
   RC\frac{dv_O}{dt} + v_O(t) = v_I.
   \label{eq:kvl2}
 \end{equation}
 
-Equation~\ref{eq:kvl2} is a linear differencial equation whose solution is a
+Equation~(\ref{eq:kvl2}) is a linear differencial equation whose solution is a
 superposition of a natural solution $v_{On}$ and a forced solution $v_{Of}$:
 
 \begin{equation}
@@ -42,15 +43,16 @@ As learned in the theory classes the natural solution is of the form
 \end{equation}
 where $A$ is an integration constant.
 
-The forced solution is of the form
+The forced solution is of the form given in Equation~(\ref{eq:vo_for}) and is
+illustrated in Figure~\ref{fig:forced}.
+
 \begin{equation}
   V_{Of}(t) = |\bar{V}_{Of}| cos(\omega t + \angle \bar{V}_{Of}),
   \label{eq:vo_for}
 \end{equation}
 
-\lipsum[1-2]
+\lipsum[1-1]
 
-The forced solution is iluustrated in Figure~\ref{fig:forced}. \lipsum[1-1]
 
 \begin{figure}[h] \centering
 \includegraphics[width=0.8\linewidth]{forced.eps}
@@ -60,4 +62,6 @@ The forced solution is iluustrated in Figure~\ref{fig:forced}. \lipsum[1-1]
 
 \section{Frequency response}
 
-\lipsum[1-3]
+\lipsum[1-1]
+
+

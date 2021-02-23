@@ -12,6 +12,7 @@ all: $(FILE).pdf
 $(FILE).pdf: $(wildcard *.tex) $(LODFIGS) octave.log ngspice
 	pdflatex  $(FILE).tex
 	pdflatex  $(FILE).tex
+	pdflatex  $(FILE).tex
 
 octave.log:
 	octave ../mat/rc.m > octave.log
