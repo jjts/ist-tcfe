@@ -203,5 +203,12 @@ illustrated in lab assignment T0, using the Makefile and bash commands to
 help. This procedure ensures that the Ngspice code and the text are always in
 sync.
 
+### Introduction
+
+This section should state if the learning objective of the work has been
+achieved. It should summarise the results of the simulations and their agreement
+with the theoretical predictions, commening on any relevant discrepancies
+indicating the main reasons for them. Two to three paragraphs should suffice
+with a maximum of 250 words.
 
 
