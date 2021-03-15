@@ -38,6 +38,7 @@ Octave (open-source alternative to Matlab):
 
 ```
 sudo apt install octave
+sudo apt install octave-symbolic
 sudo apt install octave-signal
 sudo apt install octave-control
 ```
