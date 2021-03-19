@@ -1,3 +1,30 @@
+% close all
+% clear all
+
+% %%EXAMPLE SYMBOLIC COMPUTATIONS
+
+% %% MESH METHOD
+
+% pkg load symbolic
+
+% syms R1 R2 R3 R4 R5 R6 R7  %% Todas as resistencias
+% syms V_a V_c V_b 
+
+% syms Ia Ib Ic Id
+
+% %% MESH METHOD
+% eq_A= V_a+R3*(Ia-Ib)+R1*Ia == 0
+% eq_B= R2*Ib +R3*(Ib-Ia)+R5*(Ib-Id) == 0
+% eq_C= R6*Ic+R7*Ic -V_c == 0
+% eq_D= V_c+R5*(Id-Ib) == 0
+
+
+
+ 
+% %print forced.eps
+
+
+
 close all
 clear all
 
@@ -72,4 +99,3 @@ plot (t*1000, vo, "b");
 xlabel ("t[ms]");
 ylabel ("vi(t), vo(t) [V]");
 print (hf, "forced.eps", "-depsc");
-%print forced.eps
