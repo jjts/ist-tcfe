@@ -1,18 +1,18 @@
 \section{Theoretical Analysis}
 \label{sec:analysis}
 
-In this section, the circuit shown in Figure~\ref{fig:rc} is analysed
-theoretically, in terms of its time and frequency responses.
+In this section, the circuit shown in Figure~\ref{fig:ciruit} is analysed
+theoretically, first we aproach the circuit using the mesh analysis, and later we analyse the circuit using the nodal analysis.
 
-\section{Time response}
+\subsection{Mesh Analysis}
 
-The circuit consists of a single V-R-C loop where a current $i(t)$ circulates. The
-voltage source $v_I(t)$ drives its input, and the output voltage $v_O(t)$ is taken from
-the capacitor terminals. Applying the Kirchhoff Voltage Law (KVL), a single
-equation for the single loop in the circuit can be written as
+As seen during theoretical lessons, we can use a mesh analysis to analyse the circuit.
+This method is built upon Kirchhoff's Voltage Law that states:
+
+In a mesh, the sum of all voltages equals 0.
 
 \begin{equation}
-  Ri(t) + v_O(t) = v_I(t).
+  \sum_{i=0}^{n} V_i = 0
   \label{eq:kvl}
 \end{equation}
 
@@ -60,8 +60,6 @@ illustrated in Figure~\ref{fig:forced}.
 \label{fig:forced}
 \end{figure}
 
-\section{Frequency response}
-
-\lipsum[1-1]
+\subsection{Nodal Analysis}
 
 
