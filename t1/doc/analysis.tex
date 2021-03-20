@@ -1,7 +1,7 @@
 \section{Theoretical Analysis}
 \label{sec:analysis}
 
-In this section, the circuit shown in Figure~\ref{fig:ciruit} is analysed
+In this section, the circuit shown in Figure~\ref{fig:circuit} is analysed
 theoretically, first we aproach the circuit using the mesh analysis, and later we analyse the circuit using the nodal analysis.
 
 \subsection{Mesh Analysis}
@@ -16,49 +16,93 @@ In a mesh, the sum of all voltages equals 0.
   \label{eq:kvl}
 \end{equation}
 
-Because $v_O$ is the voltage between capacitor C's plates, it is related to the
-current $i$ by
-\begin{equation}
-  i(t) = C\frac{dv_O}{dt}.
-\end{equation}
+The method consists of identifying every mesh, labeling its current and choosing the currents direction.
+Then the KVL equations are written for each mesh, and we can solve the system of equations, solving consequently the circuit.
 
-Hence, Equation~(\ref{eq:kvl}) can be rewritten as
-\begin{equation}
-  RC\frac{dv_O}{dt} + v_O(t) = v_I.
-  \label{eq:kvl2}
-\end{equation}
-
-Equation~(\ref{eq:kvl2}) is a linear differencial equation whose solution is a
-superposition of a natural solution $v_{On}$ and a forced solution $v_{Of}$:
-
-\begin{equation}
-  v_O(t) = v_{On}(t) + v_{Of}(t).
-  \label{eq:vo_sol}
-\end{equation}
-
-As learned in the theory classes the natural solution is of the form
-\begin{equation}
-  v_{On}(t) = Ae^{-\frac{t}{RC}},
-  \label{eq:vo_nat}
-\end{equation}
-where $A$ is an integration constant.
-
-The forced solution is of the form given in Equation~(\ref{eq:vo_for}) and is
-illustrated in Figure~\ref{fig:forced}.
-
-\begin{equation}
-  V_{Of}(t) = |\bar{V}_{Of}| cos(\omega t + \angle \bar{V}_{Of}),
-  \label{eq:vo_for}
-\end{equation}
-
-\lipsum[1-1]
-
-
+As seen in in figure~\ref{fig:mesh}, there are four meshes, each with currents $I_a$, $I_b$, $I_c$, $I_d$, 
+we will label each mesh as A, B, C, D respectively.
 \begin{figure}[h] \centering
-\includegraphics[width=0.8\linewidth]{forced.eps}
-\caption{Forced sinusoidal response.}
-\label{fig:forced}
-\end{figure}
+  \includegraphics[width=0.6\linewidth]{mesh-currents.pdf}
+  \caption{Current choosen for each mesh}
+  \label{fig:mesh}
+  \end{figure}
+
+The equations for each mesh are therefore:
+
+% Mesh Equations
+\begin{equation}
+  \mathbf{E_A} : R_1 \cdot I_a + V_a + R_4 \cdot ( I_a -I_c )+ R_3 \cdot ( I_a - I_b ) = 0
+  \label{eq:kvlA}
+\end{equation}
+\begin{equation}
+  \mathbf{E_B} : R_2 \cdot I_b + R_3 \cdot ( I_b - I_a ) + R_5 \cdot ( I_b - I_d ) = 0
+  \label{eq:kvlB}
+\end{equation}
+\begin{equation}
+  \mathbf{E_C} : R_6 \cdot I_c + R_7 \cdot I_c - V_c +  R_4 \cdot ( I_c -I_a ) = 0
+  \label{eq:kvlC}
+\end{equation}
+\begin{equation}
+  \mathbf{E_D} : V_c + R_5 \cdot ( I_d - I_d )= 0
+  \label{eq:kvlD}
+\end{equation}
+
+
+Solving this system of equations, using the following values generated used the data generator python program using the number 93156:
+
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{ c c }
+    R1 & 1.03919759193 \\ 
+    \hline
+    R2 & 2.06836523173 \\ 
+    \hline
+    R3 & 3.03375774261 \\ 
+    \hline
+    R4 & 4.12779067183 \\ 
+    \hline
+    R5 & 3.11985677803 \\ 
+    \hline
+    R6 & 2.04513887844 \\ 
+    \hline
+    R7 & 1.04289965713 \\ 
+    \hline
+    Va & 5.00439410964 \\ 
+    \hline
+    Id & 1.04536428769 \\ 
+    \hline
+    Kb & 7.25705461539 \\ 
+    \hline
+    Kc & 8.23640363075 \\ 
+  \end{tabular}
+  \caption{Data generated using number 93156}
+  \label{tab:data}
+\end{table}
+
+
+And the the following extra equations:
+\begin{equation}
+  I_b=K_b \times V_b
+  \label{eq:extra1}
+\end{equation}
+where:
+\begin{equation}
+  V_b= R_3 \times (I_b-I_a)
+  \label{eq:extra1}
+\end{equation}
+and
+\begin{equation}
+  V_c=K_c \times I_c
+  \label{eq:extra2}
+\end{equation}
+
+
+
+
+
+We reach the following results, using octave:
+
 
 \subsection{Nodal Analysis}
 
