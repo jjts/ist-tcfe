@@ -38,7 +38,11 @@ echo "********************************************"
 echo  "Operating point"
 echo "********************************************"
 
+
 echo  "op_TAB"
+print @Vx[i]
+print @Hc[i]
+print @Va[i]
 print all
 echo  "op_END"
 
