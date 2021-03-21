@@ -1,0 +1,49 @@
+*
+* NGSPICE simulation script
+* Lab1 circuit
+*
+
+* forces current values to be saved
+.options savecurrents
+
+* resistors
+R1 0 N1 1.03431507833k
+R2 N2 0 2.02853090731k
+R3 0 N3 3.1462050633k
+R4 N4 N3 4.03438547455k
+R5 N3 N5 3.12170042214k
+R6 N4 N6 2.07116379646k
+R7 N7 N8 1.01597753093k
+
+* independent voltage source
+Va N1 N4 DC 5.156959346
+
+* independent current source
+Id N7 N5 DC 1.01455683569m
+
+* linearly dependent sources
+* voltage-controlled current source
+Gb N5 N2 0 N3 7.1497941196m
+
+* current-controlled voltage source
+Vx N6 N8 DC 0
+Hc N3 N7 Vx 8.12593642585k
+
+
+.control
+
+op
+
+echo "********************************************"
+echo  "Operating point"
+echo "********************************************"
+
+echo  "op_TAB"
+print all
+echo  "op_END"
+
+quit
+
+.endc
+
+.end
