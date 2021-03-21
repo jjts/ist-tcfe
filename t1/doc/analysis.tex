@@ -1,12 +1,12 @@
 \section{Theoretical Analysis}
 \label{sec:analysis}
 
-In this section, the circuit shown in Figure~\ref{fig:circuito} is analysed
+\hspace{0,5cm} In this section, the circuit shown in Figure~\ref{fig:circuito} is analysed
 theoretically, in terms of it's node voltages and mesh currents.
 
 \subsection{Mesh Analysis Method}
 
-ESCREVER AQUI ALGUMA COISA
+\hspace{0,5cm} ESCREVER AQUI ALGUMA COISA
 
 Starting by number the nodes arbitrarily, assigning current names and directions to all branches also arbitrarily and defining one node as ground (GND) a system of equations obtained applying the Kirchhoff Current Law (KCL)to each mesh can be written as 
 
@@ -40,7 +40,7 @@ After solving the system with Octave tools we get the table~\ref{tab:mesh} resul
   \begin{tabular}{|l|r|}
     \hline    
     {\bf Name} & {\bf Value [A or V]} \\ \hline
-    \input{op_tab}
+    \input{../mat/octaveI_tab}
   \end{tabular}
   \caption{Operating point. A variable preceded by @ is of type {\em current} and expressed in Ampere; other variables are of type {\it voltage} and expressed in Volt.}
   \label{tab:mesh}
@@ -52,10 +52,12 @@ After solving the system with Octave tools we get the table~\ref{tab:mesh} resul
 \hspace{0,5cm} The Nodal Analysis Method is another general procedure analysing circuits using node voltages as the circuit variables. 
 
 To find the nodal voltages we chose 7 equations (8 nodes - 1 = 7 linearly independent equations) that comprise:
+\begin{itemize}
+\item  KCL in nodes not connected to voltage sources;
 
-\hspace{1cm} KCL in nodes not connected to voltage sources;
+\item Additional equations for nodes related by voltage sources.
+\end{itemize}
 
-\hspace{1cm} Additional equations for nodes related by voltage sources.
 
 The system of equations tha will be solved is:
 
