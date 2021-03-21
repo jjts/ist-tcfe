@@ -20,6 +20,7 @@ B = [-Va;0;0]
 
 I = A\B
 
+printf ("octave_TAB\n");
 Ia = I(1,1)
 Ib = I(2,1)
 Ic = I(3,1)
@@ -53,3 +54,4 @@ Vb = V0 - V5
 Ib = Vb*Kb
 Vc = V3 - V7
 Ic = Vc/Kc
+printf ("octave_END\n");
