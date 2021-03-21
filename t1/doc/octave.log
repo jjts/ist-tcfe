@@ -1,61 +1,35 @@
-Symbolic pkg v2.8.0: Python communication link active, SymPy v1.5.1.
-i(t) = (symfun)
+A =
 
-    d        
-  C⋅──(vo(t))
-    dt       
+   8214.90562  -3146.20506  -4034.38547
+  -4034.38547      0.00000  -1004.40962
+    -22.49472     21.49472      0.00000
 
+B =
 
+  -5.15696
+   0.00000
+   0.00000
 
-KVL equation:
-vi(t) = (symfun)
+I =
 
-      d                
-  C⋅R⋅──(vo(t)) + vo(t)
-      dt               
+  -0.00024409
+  -0.00025545
+   0.00098044
 
-
-
-Solution is of the formv(t) = (symfun) vo_f(t) + voₙ(t)
-
-
-Natural solution:
-vi(t) = (symfun) 0
-i_n(t) = (symfun)
-
-    d         
-  C⋅──(voₙ(t))
-    dt        
-
-
-
- Natural solution is of the formvo_n(t) = (symfun)
-
-     t⋅wn
-  A⋅ℯ    
-
-ans = (sym)
-
-     t⋅wn       d             
-  A⋅ℯ     + C⋅R⋅──(voₙ(t)) = 0
-                dt            
-
-ans = (sym)
-
-            t⋅wn      t⋅wn    
-  A⋅C⋅R⋅wn⋅ℯ     + A⋅ℯ     = 0
-
-ans = (sym) C⋅R⋅wn + 1 = 0
-ans = (sym)
-
-  -1 
-  ───
-  C⋅R
-
-R =  1000
-C =  0.00000010000
-f =  1000
-Zc =     0.00000 - 1591.54943i
-Cgain =  0.71696 - 0.45048i
-Gain =  0.84673
-Phase = -0.56098
+Ia = -0.00024409
+Ib = -0.00025545
+Ic =  0.00098044
+Vb = -0.035728
+Vc =  7.9670
+V0 = 0
+V1 =  1.0412
+V2 =   -1.3051e-16
+V3 = -3.1671
+V4 = -4.1158
+V5 =   -1.3951e-16
+V6 = -1.2110
+V7 = -3.1671
+Vb =    1.3951e-16
+Ib =    9.9748e-19
+Vc = -0.000010027
+Ic = -0.0000000012340
