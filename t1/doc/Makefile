@@ -12,7 +12,7 @@ all: $(FILE).pdf
 	evince $< &
 
 $(FILE).pdf: $(wildcard *.tex) $(LODFIGS)
-	cp -f ../mat/*.eps .
+	cp -f ../mat/*.eps . 2>/dev/null || :
 	pdflatex  $(FILE).tex
 	pdflatex  $(FILE).tex
 	pdflatex  $(FILE).tex
