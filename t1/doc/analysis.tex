@@ -42,7 +42,7 @@ After solving the system with Octave tools we get the table~\ref{tab:mesh} resul
     {\bf Name} & {\bf Value [A or V]} \\ \hline
     \input{../mat/octaveI_tab}
   \end{tabular}
-  \caption{Operating point. A variable preceded by @ is of type {\em current} and expressed in Ampere; other variables are of type {\it voltage} and expressed in Volt.}
+  \caption{ Results obtained by mesh analysis method with octave tool}
   \label{tab:mesh}
 \end{table}
 
@@ -91,6 +91,20 @@ I_d \\
 0
 \end{bmatrix}
 \end{equation}
+
+
+After solving the system with Octave tools we get the table~\ref{tab:nodal} results.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value [A or V]} \\ \hline
+    \input{../mat/octavev_tab}
+  \end{tabular}
+  \caption{Results obtained by nodal analysis method with octave tool}
+  \label{tab:nodal}
+\end{table}
 
 \lipsum[1-1]
 
