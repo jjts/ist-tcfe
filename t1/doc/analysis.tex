@@ -67,8 +67,8 @@ In determining equation*s $\mathbf{E_1}$ to $\mathbf{E_4}$, we have used the fol
 
 
 In matrix form, the system looks like the following:
-\newline
-\newline
+
+\vspace{10mm}
 
 \center{$\begin{bmatrix}
 R_1 + R_2 + R_3  &  -R_3                 &  -R_4        &  0 \\
@@ -84,15 +84,13 @@ y_4
 \end{bmatrix}$
 $=$
 $\begin{bmatrix}
+  -V_a \\
   0 \\
   0 \\
-  0 \\
-  0
+  I_d
 \end{bmatrix}$}
-\newline
-\newline
-\newline
-\newline
+
+\vspace{20mm}
 
 Solving this system of equations, using the following values generated with the t1\_datagen.py script using the number 93156:
 
@@ -197,7 +195,6 @@ K_b             & 0                     &  C_5
 &  -(C_5 + K_b)(1 - K_c C_{6,7}) \\
 -C_3 & 0 & -C_5 & (1-K_c \cdot C_{6,7})(C_4 + C_3 + C_5) + C_{6,7}
 \end{bmatrix}
-\textbf{b} =
 \begin{bmatrix}
 e_1 \\
 e_2 \\
