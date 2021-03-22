@@ -1,0 +1,27 @@
+Ngspice T1
+
+.options savecurrents
+
+V1  v(1)  v(6)   5.17885996884
+I1  GND  v(3)  1.04908336809m
+V0  v(6)  v(4)  0
+R1  v(8)  v(1)  1.02362892933K
+R2  v(2)  v(8)  2.08640382129K
+R3  v(8)  v(7)  3.09996108706K
+R4  v(7)  v(6)  4.08183334334K
+R5  v(3)  v(7)  3.0416957579K
+R6  v(5)  v(4)  2.04156679366K
+R7  GND  v(5)  1.04156790057K
+G1  v(3)  v(2)  v(8)  v(7)  7.29571922963m
+H1  v(7)  GND  V0  8.16840649221K
+.model P2model NPN(Bf=200, CJE=12pF, CJC=2pF)
+.control
+op
+echo "op_TAB"
+print all
+echo "op_END"
+quit
+.endc
+
+.end
+
