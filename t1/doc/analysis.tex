@@ -19,9 +19,9 @@ In a mesh, the sum of all voltages equals 0.
 The method consists of identifying every mesh, labeling its current and choosing the currents direction.
 Then the KVL equations are written for each mesh, and we can solve the system of equations, solving consequently the circuit.
 
-As seen in in figure~\ref{fig:mesh}, there are four meshes, each with currents $I_a$, $I_b$, $I_c$, $I_d$, 
+As seen in in figure~\ref{fig:mesh}, there are four meshes, each with currents $Y_a$, $Y_b$, $Y_c$, $Y_d$, 
 we will label each mesh as A, B, C, D respectively.
-\begin{figure}[h] \centering
+\begin{figure}[H] \centering
   \includegraphics[width=0.6\linewidth]{mesh-currents.pdf}
   \caption{Current choosen for each mesh}
   \label{fig:mesh}
@@ -51,7 +51,7 @@ The equations for each mesh are therefore:
 Solving this system of equations, using the following values generated used the data generator python program using the number 93156:
 
 
-\begin{table}[h]
+\begin{table}[H]
   \centering
   \begin{tabular}{ c c }
     R1 & 1.03919759193 \\ 
@@ -103,7 +103,12 @@ and
 
 We reach the following results, using octave:
 
+ % Table with results created with octave
+    \input{../mat/mesh_octave.tex}
+
 
 \subsection{Nodal Analysis}
 
 
+ % Table with results created with octave
+ \input{../mat/nodal_octave.tex}
