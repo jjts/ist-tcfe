@@ -1,8 +1,8 @@
 close all
 clear all
+format short e
 
 pkg load symbolic
-format long
 
 R1 = 1.03431507833e003;
 R2 = 2.02853090731e003;
@@ -21,12 +21,18 @@ B = [-Va;0;0]
 
 I = A\B
 
-Ia = I(1,1)
-Ib = I(2,1)
-Ic = I(3,1)
-
-Vb = (Ib - Ia)*R3
+printf ("octaveI_TAB\n");
+IA = I(1,1)
+IB = I(2,1)
+IC = I(3,1)
+ID = Id
+Ib = IB
+Ic = IC
+Vb = Ib/Kb
 Vc = Kc*Ic
+printf ("octaveI_END\n");
+
+
 
 G1 = 1/R1;
 G2 = 1/R2;
@@ -36,11 +42,19 @@ G5 = 1/R5;
 G6 = 1/R6;
 G7 = 1/R7;
 
-C = [1,0,0,0,0,0,0,0;0,1,0,0,-1,0,0,0;0,G1,G2,G3,0,0,0,0;0,0,-Kb-G2,0,0,Kb,0,0;0,0,-Kb,G5,0,Kb-G5,0,0;0,0,0,0,-G6,0,G6+G7,-G7;0,G1,0,-G4,G4,0,G7,-G7;0,0,0,1,-Kc*G6,0,Kc*G6,-1];
-D = [0;Va;0;0;Id;0;0;0];
+C = [1,0,0,0,0,0,0,0;...
+-G1-G2-G3,G1,G2,G3,0,0,0,0;...
+Kb+G2,0,-G2,-Kb,0,0,0,0;...
+0,1,0,0,-1,0,0,0;...
+-Kb,0,0,Kb+G5,0,-G5,0,0;...
+0,0,0,0,G6,0,-G6-G7,G7;...
+0,0,0,1,-Kc*G6,0,Kc*G6,-1;...
+G3,0,0,-G4-G3-G5,G4,G5,G7,-G7];
 
-V = C\D
+D = [0;0;0;Va;-Id;0;0;Id];
 
+V = C\D;
+printf ("octavev_TAB\n");
 V0 = V(1,1)
 V1 = V(2,1)
 V2 = V(3,1)
@@ -49,8 +63,11 @@ V4 = V(5,1)
 V5 = V(6,1)
 V6 = V(7,1)
 V7 = V(8,1)
-
 Vb = V0 - V3
 Ib = Vb*Kb
 Vc = V3 - V7
 Ic = Vc/Kc
+printf ("octavev_END\n");
+
+
+
