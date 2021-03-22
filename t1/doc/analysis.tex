@@ -19,36 +19,82 @@ In a mesh, the sum of all voltages equals 0.
 The method consists of identifying every mesh, labeling its current and choosing the currents direction.
 Then the KVL equations are written for each mesh, and we can solve the system of equations, solving consequently the circuit.
 
-As seen in in figure~\ref{fig:mesh}, there are four meshes, each with currents $Y_a$, $Y_b$, $Y_c$, $Y_d$, 
+As seen in in Figure~\ref{fig:mesh}, there are four meshes, each with currents $Y_a$, $Y_b$, $Y_c$, $Y_d$, 
 we will label each mesh as A, B, C, D respectively.
+
+%image of meshes
 \begin{figure}[H] \centering
   \includegraphics[width=0.6\linewidth]{mesh-currents.pdf}
   \caption{Current choosen for each mesh}
   \label{fig:mesh}
-  \end{figure}
+\end{figure}
 
 The equations for each mesh are therefore:
 
 % Mesh Equations
-\begin{equation}
-  \mathbf{E_A} : R_1 \cdot I_a + V_a + R_4 \cdot ( I_a -I_c )+ R_3 \cdot ( I_a - I_b ) = 0
+\begin{equation*}
+  \mathbf{E_1} : y_1 + R_4\cdot(y_1 - y_3) + R_3 \cdot(y_1 - y_2) + y_1 \cdot R_1 = 0
   \label{eq:kvlA}
-\end{equation}
-\begin{equation}
-  \mathbf{E_B} : R_2 \cdot I_b + R_3 \cdot ( I_b - I_a ) + R_5 \cdot ( I_b - I_d ) = 0
+\end{equation*}
+\begin{equation*}
+  \mathbf{E_2} : y_2 \cdot (1-R_3 \cdot K_b) + K_b \cdot R_3 \cdot y_1 = 0
   \label{eq:kvlB}
-\end{equation}
-\begin{equation}
-  \mathbf{E_C} : R_6 \cdot I_c + R_7 \cdot I_c - V_c +  R_4 \cdot ( I_c -I_a ) = 0
+\end{equation*}
+\begin{equation*}
+  \mathbf{E_3} : y_3 \cdot R_6 + y_3 \cdot R_7 - V_c + (y_3 - y_1) \cdot R_4 = 0
   \label{eq:kvlC}
-\end{equation}
-\begin{equation}
-  \mathbf{E_D} : V_c + R_5 \cdot ( I_d - I_b )= 0
+\end{equation*}
+\begin{equation*}
+  \mathbf{E_4} : y_4 = I_d
   \label{eq:kvlD}
-\end{equation}
+\end{equation*}
+In determining equation*s $\mathbf{E_1}$ to $\mathbf{E_4}$, we have used the following relations:
+\begin{equation*}
+  I_b=K_b \times V_b
+  \label{eq:extra1}
+\end{equation*}
+\begin{equation*}
+  V_b= R_3 \times (y_3-y_1)
+  \label{eq:extra1}
+\end{equation*}
+\begin{equation*}
+  V_c=K_c \times I_c
+  \label{eq:extra2}
+\end{equation*}
+\begin{equation*}
+    I_c = y_3
+\end{equation*}
 
 
-Solving this system of equations, using the following values generated used the data generator python program using the number 93156:
+In matrix form, the system looks like the following:
+\newline
+\newline
+
+\center{$\begin{bmatrix}
+R_1 + R_2 + R_3  &  -R_3                 &  -R_4        &  0 \\
+K_{b} R_3        &  1 - R_{3} K_{b}      &  0           &  0 \\
+-R_4             & 0                     &  R_{6} + R_7 + R_4 - K_c            &  0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}$
+$\begin{bmatrix}
+y_1 \\
+y_2 \\
+y_3 \\
+y_4
+\end{bmatrix}$
+$=$
+$\begin{bmatrix}
+  0 \\
+  0 \\
+  0 \\
+  0
+\end{bmatrix}$}
+\newline
+\newline
+\newline
+\newline
+
+Solving this system of equations, using the following values generated with the t1\_datagen.py script using the number 93156:
 
 
 \begin{table}[H]
@@ -81,24 +127,6 @@ Solving this system of equations, using the following values generated used the 
 \end{table}
 
 
-And the the following extra equations:
-\begin{equation}
-  I_b=K_b \times V_b
-  \label{eq:extra1}
-\end{equation}
-where:
-\begin{equation}
-  V_b= R_3 \times (I_b-I_a)
-  \label{eq:extra1}
-\end{equation}
-and
-\begin{equation}
-  V_c=K_c \times I_c
-  \label{eq:extra2}
-\end{equation}
-
-
-
 
 
 We reach the following results, using octave:
@@ -109,6 +137,12 @@ We reach the following results, using octave:
 
 \subsection{Nodal Analysis}
 
+\begin{figure}[H] \centering
+  \includegraphics[width=0.6\linewidth]{nodal.pdf}
+  \caption{Nodes used in Nodal Analysis}
+  \label{fig:mesh}
+\end{figure}
 
+Reaching the following results with octave:
  % Table with results created with octave
  \input{../mat/nodal_octave.tex}

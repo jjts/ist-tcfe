@@ -73,13 +73,13 @@ fid = fopen (filename, "w+");
 fprintf(fid, "\\begin{table}[h] \n \\centering \n \\begin{tabular}{ c c } \n")
 
 fprintf(fid, "\n \\hline\n")
-fprintf(fid, "Ia & %f \\\\ \n ", x(1))
+fprintf(fid, "$y_1$ & %f \\\\ \n ", x(1))
 fprintf(fid, "\\hline\n")
-fprintf(fid, "Ib & %f \\\\ \n ", x(2))
+fprintf(fid, "$y_2$ & %f \\\\ \n ", x(2))
 fprintf(fid, "\\hline\n")
-fprintf(fid, "Ic & %f \\\\ \n ", x(3))
+fprintf(fid, "$y_3$ & %f \\\\ \n ", x(3))
 fprintf(fid, "\\hline\n")
-fprintf(fid, "Id & %f \\\\ \n ", x(4))
+fprintf(fid, "$y_4$ & %f \\\\ \n ", x(4))
 fprintf(fid, "\\hline\n")
 
 fprintf(fid, "  \\end{tabular} \n \\caption{Results of Mesh Analysis using Octave} \n \\label{tab:mesh_results} \n \\end{table} \n ")
