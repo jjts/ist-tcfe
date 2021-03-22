@@ -135,6 +135,13 @@ We reach the following results, using octave:
     \input{../mat/mesh_octave.tex}
 
 
+
+
+
+
+
+
+
 \subsection{Nodal Analysis}
 
 \begin{figure}[H] \centering
@@ -142,6 +149,71 @@ We reach the following results, using octave:
   \caption{Nodes used in Nodal Analysis}
   \label{fig:mesh}
 \end{figure}
+
+
+SMALL INTRO
+
+\begin{equation*}
+  \mathbf{N\acute{o}_0} : e_0 = V_a
+  \label{eq:kcl0}
+\end{equation*}
+\begin{equation*}
+  \mathbf{N\acute{o}_1} : -C_1 \cdot (e_0 - e_1) - C_3 \cdot (e_4 - K_c \cdot C_{6,7} \cdot e_4 - e_1) - C_2 \cdot (e_2 - e_1) = 0
+  \label{eq:kcl1}
+\end{equation*}
+\begin{equation*}
+  \mathbf{N\acute{o}_2} : C_2 \cdot (e_2 - e_1) - K_b \cdot (e_1 - e_4 + K_c \cdot C_{6,7} \cdot e_4) = 0
+  \label{eq:kcl2}
+\end{equation*}
+\begin{equation*}
+  \mathbf{N\acute{o}_3} : C_5 \cdot (e_3 - e_4 + K_c \cdot C_{6,7} \cdot e_4) + K_b \cdot (e_1 - e_4 + K_c \cdot C_{6,7} \cdot e_4) - I_d = 0
+  \label{eq:kcl3}
+\end{equation*}
+\begin{equation*}
+    \mathbf{SuperN\acute{o}} : -C_4 \cdot (-e_4 + K_c \cdot C_{6,7} \cdot e_4) + C_3 \cdot (e_4 - k_c \cdot C_{6,7} \cdot e_4 - e_1) - C_5 (e_3 - e_4 + k_c \cdot C_{6,7} \cdot e_6) + e_4 C_{6,7} + I_d = 0
+\end{equation*}
+In determining these equations, we have used, as for the the mesh analysis, the relations:
+\begin{equation*}
+    I_b = K_b \times V_b
+\end{equation*}
+\begin{equation*}
+    V_b = (e_1 - e_4 + V_c)
+\end{equation*}
+\begin{equation*}
+    V_c = K_c \times I_c
+\end{equation*}
+\begin{equation*}
+    I_c = -e_4 \times C_{6,7}
+\end{equation*}
+
+In matrix form, the system of looks like this:
+\vspace{10mm}
+
+
+$\begin{bmatrix}
+C_1 + C_2 + C_3  &  -C_2                 &  0        &  -C_3(1-k_c \cdot C_{6,7}) \\
+-C_2 - K_b        &  C_2      &  0           &  K_b \cdot (1 - K_c \cdot C_{6,7}) \\
+K_b             & 0                     &  C_5
+&  -(C_5 + K_b)(1 - K_c C_{6,7}) \\
+-C_3 & 0 & -C_5 & (1-K_c \cdot C_{6,7})(C_4 + C_3 + C_5) + C_{6,7}
+\end{bmatrix}
+\textbf{b} =
+\begin{bmatrix}
+e_1 \\
+e_2 \\
+e_3 \\
+e_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+V_a \cdot C_1 \\
+0 \\
+I_d \\
+-I_d
+\end{bmatrix}$
+
+\vspace{10mm}
+
 
 Reaching the following results with octave:
  % Table with results created with octave
