@@ -54,7 +54,7 @@ In determining equations $\mathbf{E_1}$ to $\mathbf{E_4}$, we have used the foll
   \label{eq:extra1}
 \end{equation*}
 \begin{equation*}
-  V_b= R_3 \times (y_3-y_1)
+  V_b= R_3 \times (y_2-y_1)
   \label{eq:extra1}
 \end{equation*}
 \begin{equation*}
@@ -142,7 +142,7 @@ We reach the following results, using octave:
 
 \subsection{Nodal Analysis}
 
-he general point of the node analysis method is to figure out the node voltages of all the nodes in our circuit (in relation to a reference node,
+The general point of the node analysis method is to figure out the node voltages of all the nodes in our circuit (in relation to a reference node,
 which we call ground, and whose voltage we set to 0). Having figured this out,
 it's straightforward to determine the branch currents and voltages, thus completely solving the circuit. 
 \par
@@ -179,36 +179,40 @@ thus getting two equations for our two "problematic" nodes.
 We can therefore write the following equations:
 
 \begin{equation*}
-  \mathbf{Node_0} : e_0 = V_a
+  \mathbf{Node_1} : e_1 = V_a
   \label{eq:kcl0}
 \end{equation*}
 \begin{equation*}
-  \mathbf{Node_1} : -C_1 \cdot (e_0 - e_1) - C_3 \cdot (e_4 - K_c \cdot C_{6,7} \cdot e_4 - e_1) - C_2 \cdot (e_2 - e_1) = 0
+  \mathbf{Node_2} : -C_1 \cdot (e_1 - e_2) - C_3 \cdot (e_8 - K_c \cdot C_{6,7} \cdot e_8 - e_2) - C_2 \cdot (e_3 - e_2) = 0
   \label{eq:kcl1}
 \end{equation*}
 \begin{equation*}
-  \mathbf{Node_2} : C_2 \cdot (e_2 - e_1) - K_b \cdot (e_1 - e_4 + K_c \cdot C_{6,7} \cdot e_4) = 0
+  \mathbf{Node_3} : C_2 \cdot (e_3 - e_2) - K_b \cdot (e_2 - e_8 + K_c \cdot C_{6,7} \cdot e_8) = 0
   \label{eq:kcl2}
 \end{equation*}
 \begin{equation*}
-  \mathbf{Node_3} : C_5 \cdot (e_3 - e_4 + K_c \cdot C_{6,7} \cdot e_4) + K_b \cdot (e_1 - e_4 + K_c \cdot C_{6,7} \cdot e_4) - I_d = 0
+  \mathbf{Node_6} : C_5 \cdot (e_6 - e_8 + K_c \cdot C_{6,7} \cdot e_8) + K_b \cdot (e_2 - e_8 + K_c \cdot C_{6,7} \cdot e_8) - I_d = 0
   \label{eq:kcl3}
 \end{equation*}
 \begin{equation*}
-    \mathbf{SuperNode} : -C_4 \cdot (-e_4 + K_c \cdot C_{6,7} \cdot e_4) + C_3 \cdot (e_4 - K_c \cdot C_{6,7} \cdot e_4 - e_1) - C_5 (e_3 - e_4 + K_c \cdot C_{6,7} \cdot e_6) + e_4 C_{6,7} + I_d = 0
+    \mathbf{SuperNode} : -C_4 \cdot (-e_8 + K_c \cdot C_{6,7} \cdot e_8) + C_3 \cdot (e_8 - k_c \cdot C_{6,7} \cdot e_8 - e_2) - C_5 (e_6 - e_8 + k_c \cdot C_{6,7} \cdot e_8) + e_8 \cdot C_{6,7} + I_d = 0
 \end{equation*}
+
+
 In determining these equations, we have used, as for the the mesh analysis, the relations:
+
+
 \begin{equation*}
     I_b = K_b \times V_b
 \end{equation*}
 \begin{equation*}
-    V_b = (e_1 - e_4 + V_c)
+    V_b = (e_2 - e_8 + V_c)
 \end{equation*}
 \begin{equation*}
     V_c = K_c \times I_c
 \end{equation*}
 \begin{equation*}
-    I_c = -e_4 \times C_{6,7}
+    I_c = -e_8 \times C_{6,7}
 \end{equation*}
 
 In matrix form, the system of looks like this:
