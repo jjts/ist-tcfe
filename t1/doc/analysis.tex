@@ -195,7 +195,7 @@ We can therefore write the following equations:
   \label{eq:kcl3}
 \end{equation*}
 \begin{equation*}
-    \mathbf{SuperNode} : -C_4 \cdot (-e_4 + K_c \cdot C_{6,7} \cdot e_4) + C_3 \cdot (e_4 - k_c \cdot C_{6,7} \cdot e_4 - e_1) - C_5 (e_3 - e_4 + k_c \cdot C_{6,7} \cdot e_6) + e_4 C_{6,7} + I_d = 0
+    \mathbf{SuperNode} : -C_4 \cdot (-e_4 + K_c \cdot C_{6,7} \cdot e_4) + C_3 \cdot (e_4 - K_c \cdot C_{6,7} \cdot e_4 - e_1) - C_5 (e_3 - e_4 + K_c \cdot C_{6,7} \cdot e_6) + e_4 C_{6,7} + I_d = 0
 \end{equation*}
 In determining these equations, we have used, as for the the mesh analysis, the relations:
 \begin{equation*}
@@ -216,7 +216,7 @@ In matrix form, the system of looks like this:
 
 
 $\begin{bmatrix}
-C_1 + C_2 + C_3  &  -C_2                 &  0        &  -C_3(1-k_c \cdot C_{6,7}) \\
+C_1 + C_2 + C_3  &  -C_2                 &  0        &  -C_3(1-K_c \cdot C_{6,7}) \\
 -C_2 - K_b        &  C_2      &  0           &  K_b \cdot (1 - K_c \cdot C_{6,7}) \\
 K_b             & 0                     &  C_5
 &  -(C_5 + K_b)(1 - K_c C_{6,7}) \\
@@ -238,6 +238,6 @@ I_d \\
 
 \vspace{10mm}
 
-Solving the system with octave we reach the following results:
+Solving the system with octave and the previous data we reach the following results:
  % Table with results created with octave
  \input{../mat/nodal_octave.tex}
