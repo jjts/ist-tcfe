@@ -16,7 +16,7 @@ In a mesh, the sum of all voltages equals 0.
   \label{eq:kvl}
 \end{equation}
 
-The method consists of identifying every mesh, labeling its current and choosing the currents direction.
+The method consists of identifying every mesh, labeling its current, and choosing the direction of the currents.
 Then the KVL equations are written for each mesh, and we can solve the system of equations, solving consequently the circuit.
 
 As seen in in Figure~\ref{fig:mesh}, there are four meshes, each with currents $Y_a$, $Y_b$, $Y_c$, $Y_d$, 
@@ -48,7 +48,7 @@ The equations for each mesh are therefore:
   \mathbf{E_4} : y_4 = I_d
   \label{eq:kvlD}
 \end{equation*}
-In determining equation*s $\mathbf{E_1}$ to $\mathbf{E_4}$, we have used the following relations:
+In determining equations $\mathbf{E_1}$ to $\mathbf{E_4}$, we have used the following relations:
 \begin{equation*}
   I_b=K_b \times V_b
   \label{eq:extra1}
@@ -138,37 +138,64 @@ We reach the following results, using octave:
 
 
 
-
+%%%%%%%%%% NODAL ANALYSIS
 
 \subsection{Nodal Analysis}
+
+he general point of the node analysis method is to figure out the node voltages of all the nodes in our circuit (in relation to a reference node,
+which we call ground, and whose voltage we set to 0). Having figured this out,
+it's straightforward to determine the branch currents and voltages, thus completely solving the circuit. 
+\par
 
 \begin{figure}[H] \centering
   \includegraphics[width=0.6\linewidth]{nodal.pdf}
   \caption{Nodes used in Nodal Analysis}
-  \label{fig:mesh}
+  \label{fig:nodal}
 \end{figure}
 
+To do this, we first need to identify and label all the nodes in our system as seen in Figure~\ref{fig:nodal},
+ as well as choose the ground node. In our case, we defined the node connected to 
+ resistance $R_4$ and to voltage source $V_a$ as ground. The second step consists in determining
+  the voltages of the easy nodes. In our circuit, it is clear to see, for example, that $e_0 = V_a$.
+   To solve the other non-trivial nodes, we proceed to write Kirchhoff's current law for each one of them,
+    which states that the sum of currents going into a node must be 0;
+     or, in other words, that charges may not accumulate in one singular node:
+\begin{equation*}
+    \sum_{i} y_i = 0
+\end{equation*}
+where $y_i$ is a current defined as going \textbf{into} the node.\par
+Using Ohm's Law, which states that $I = U/R$, and assuming we know the values of the resistances
+ of the elements in each branch (also noticing that we can write the branch
+  voltages as differences between node voltages), we get a system of equations that
+   allows us to determine each node voltage.
+\par
+Since this method seems to relies upon Ohm's law, it seems to be a fatal problem that we have a dependent voltage source in our circuit,
+$V_c$, for which we \textbf{can't} write ohm's law. To deal with this,
+we create a super-node by lumping together the nodes to which $V_c$ is connected and we write KCL
+for the super-node. To find the missing equation, we simply note that
+$V$(negative terminal of dependent voltage source) + $V_c$ = $V$(positive terminal of dependent voltage source),
+thus getting two equations for our two "problematic" nodes.
 
-SMALL INTRO
+We can therefore write the following equations:
 
 \begin{equation*}
-  \mathbf{N\acute{o}_0} : e_0 = V_a
+  \mathbf{Node_0} : e_0 = V_a
   \label{eq:kcl0}
 \end{equation*}
 \begin{equation*}
-  \mathbf{N\acute{o}_1} : -C_1 \cdot (e_0 - e_1) - C_3 \cdot (e_4 - K_c \cdot C_{6,7} \cdot e_4 - e_1) - C_2 \cdot (e_2 - e_1) = 0
+  \mathbf{Node_1} : -C_1 \cdot (e_0 - e_1) - C_3 \cdot (e_4 - K_c \cdot C_{6,7} \cdot e_4 - e_1) - C_2 \cdot (e_2 - e_1) = 0
   \label{eq:kcl1}
 \end{equation*}
 \begin{equation*}
-  \mathbf{N\acute{o}_2} : C_2 \cdot (e_2 - e_1) - K_b \cdot (e_1 - e_4 + K_c \cdot C_{6,7} \cdot e_4) = 0
+  \mathbf{Node_2} : C_2 \cdot (e_2 - e_1) - K_b \cdot (e_1 - e_4 + K_c \cdot C_{6,7} \cdot e_4) = 0
   \label{eq:kcl2}
 \end{equation*}
 \begin{equation*}
-  \mathbf{N\acute{o}_3} : C_5 \cdot (e_3 - e_4 + K_c \cdot C_{6,7} \cdot e_4) + K_b \cdot (e_1 - e_4 + K_c \cdot C_{6,7} \cdot e_4) - I_d = 0
+  \mathbf{Node_3} : C_5 \cdot (e_3 - e_4 + K_c \cdot C_{6,7} \cdot e_4) + K_b \cdot (e_1 - e_4 + K_c \cdot C_{6,7} \cdot e_4) - I_d = 0
   \label{eq:kcl3}
 \end{equation*}
 \begin{equation*}
-    \mathbf{SuperN\acute{o}} : -C_4 \cdot (-e_4 + K_c \cdot C_{6,7} \cdot e_4) + C_3 \cdot (e_4 - k_c \cdot C_{6,7} \cdot e_4 - e_1) - C_5 (e_3 - e_4 + k_c \cdot C_{6,7} \cdot e_6) + e_4 C_{6,7} + I_d = 0
+    \mathbf{SuperNode} : -C_4 \cdot (-e_4 + K_c \cdot C_{6,7} \cdot e_4) + C_3 \cdot (e_4 - k_c \cdot C_{6,7} \cdot e_4 - e_1) - C_5 (e_3 - e_4 + k_c \cdot C_{6,7} \cdot e_6) + e_4 C_{6,7} + I_d = 0
 \end{equation*}
 In determining these equations, we have used, as for the the mesh analysis, the relations:
 \begin{equation*}
@@ -211,7 +238,6 @@ I_d \\
 
 \vspace{10mm}
 
-
-Reaching the following results with octave:
+Solving the system with octave we reach the following results:
  % Table with results created with octave
  \input{../mat/nodal_octave.tex}
