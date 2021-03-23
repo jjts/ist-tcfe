@@ -34,7 +34,7 @@ I_C
 It was used 3 equations (4 meshes - 1 = 3 linearly independent equations): Mesh A, Mesh C and an addicional equation which is 
 
 \begin{equation}
-I_b = K_b V_b \textit{where} V_b = (I_B - I_A)R_3
+I_b = K_b V_b \textrm{, where } V_b = (I_B - I_A)R_3
 \end{equation}
 
 It's important to notice that D loop is independent of the remaining ones so it isn't don't need to determine the current $I_D$ as it is given on the initial data.
@@ -82,7 +82,7 @@ Finally, node 3 is connected to 4 branches so applying Ohms Law to the 3 resisto
 The system of equations that will be solved is:
 
 
-\begin{equation}
+\begin{centrar}
 \begin{bmatrix} 
 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
 -G_1 - G_2 - G_3 & G_1 & G_2 & G_3 & 0 & 0 & 0 & 0 \\
@@ -113,7 +113,7 @@ V_a \\
 0 \\ 
 I_d
 \end{bmatrix}
-\end{equation}
+\end{centrar}
 
 
 After solving the system with Octave tools we get the Table~\ref{tab:nodal} results.
