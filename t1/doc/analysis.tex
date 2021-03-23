@@ -5,9 +5,14 @@
 
 \subsection{Mesh Analysis Method}
 
-\hspace{0,5cm} ESCREVER AQUI ALGUMA COISA
+\hspace{0,5cm} 
+For this mesh metod we defined circular currents in the counter-clockwise direction and then the circuit os evaluated considering those new currents.
 
-Starting by number the nodes arbitrarily, assigning current names and directions to all branches also arbitrarily and defining one node as ground (GND) a system of equations obtained applying the Kirchhoff Current Law (KCL)to each mesh can be written as 
+Starting by number the nodes arbitrarily, assigning current names and directions to all branches also arbitrarily and defining one node as ground (GND) 
+
+Being mesh A the one with the resistors R1, R3 and R4, and the voltage source Va, the mesh B with the resistors R2, R3 and R5 and the voltage controlled current source Ib, the mesh C with the resistors R4, R6 and R7, and the current controlled voltage source Vc, and, at last, the mesh D with the resistor R5, the current source Id and the current controlled voltage source Vc. 
+
+A system of equations obtained applying the Kirchhoff Current Law (KCL)to each mesh can be written as 
 
 \begin{equation}
 \begin{bmatrix} 
@@ -27,10 +32,12 @@ I_C
 \end{bmatrix}
 \end{equation}
 
-It was used 3 equations (4 meshes - 1 = 3 linearly independent equations)
+It was used 3 equations (4 meshes - 1 = 3 linearly independent equations) : Mesh A, Mesh C and an addicional equation which is $I_b = K_b V_b \textit{where} V_b = (I_B - I_A)R_3$ 
 
 It's important to notice that D loop is independent from the restant ones so we don't need to determine the current $I_D$ as it is given on the inicial data.
-  
+
+Also we didn't use the mesh B because it had a independent current source so we couldn't aply the KVL.
+
 After solving the system with Octave tools we get the Table~\ref{tab:mesh} results.
 
 \begin{table}[h]
@@ -55,8 +62,17 @@ To find the nodal voltages we chose 7 equations (8 nodes - 1 = 7 linearly indepe
 \item Additional equations for nodes related by voltage sources.
 \end{itemize}
 
+It was used the equations regarding the nodes 0, 2, 5, 6 therefore it was necessary tree additional equations.
 
-The system of equations tha will be solved is:
+We chose to put the ground zero between tree branches ccorresponding to the ones with $R_1, R_2$ and $R_3$ because it will facilitate the system of equations .
+
+the first equation V1-V4=Va was used for node 1 because node 1 and node 4 are connected to a independent voltage source
+
+secondly knowing that Vc=Kc*Ic and Vc=V3-V7  it was concluded that for node 7 tha equation obtained was V3-V7=Kc(V3-V6)*G6
+
+Finally node 3 is connected to 4 branches so applying  Ohms law to the 3 resistors and knowing that the current that passes through Vc is I4=-Id+(V6-V7)G7 we get the final and thrid equation tha we need: (V4-V3)G4 + (V0-V3)G3 +(V5-V3)G5-Id+(V6-V7)G7
+
+The system of equations that will be solved is:
 
 \begin{equation}
 \begin{bmatrix} 
@@ -105,6 +121,5 @@ After solving the system with Octave tools we get the Table~\ref{tab:nodal} resu
   \label{tab:nodal}
 \end{table}
 
-\lipsum[1-1]
 
 

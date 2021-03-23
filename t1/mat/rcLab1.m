@@ -1,6 +1,6 @@
 close all
 clear all
-format short e
+format long e
 
 pkg load symbolic
 
