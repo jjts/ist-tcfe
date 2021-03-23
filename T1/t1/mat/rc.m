@@ -50,7 +50,7 @@ V4=F(4,1)
 V5=F(5,1)
 V6=F(6,1)
 V7=F(7,1)
-%where V3=0 and V8=V7
+%where V3=0 (GND)
 
 %%CURRENT(mA)
 
@@ -74,6 +74,5 @@ fprintf(fid,"@$V_{4}$ & %f \\\\ \hline \n",V4)
 fprintf(fid,"@$V_{5}$ & %f \\\\ \hline \n",V5)
 fprintf(fid,"@$V_{6}$ & %f \\\\ \hline \n",V6)
 fprintf(fid,"@$V_{7}$ & %f \\\\ \hline \n",V7)
-fprintf(fid,"@$V_{8}$ & %f \\\\ \hline \n",V7)
 
 fclose(fid)
