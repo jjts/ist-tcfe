@@ -39,9 +39,9 @@ I_b = K_b V_b \textrm{, where } V_b = (I_B - I_A)R_3
 
 It's important to notice that D loop is independent of the remaining ones so it isn't don't need to determine the current $I_D$ as it is given on the initial data.
 
-Also, mesh B is not used because it has an independent current source so the KVL can't be applied.
+Also, mesh B is not being used because it has an independent current source so the KVL can't be applied.
 
-After solving the system with Octave tools we get the Table~\ref{tab:mesh} results.
+After solving the system with Octave tools we get the Table~\ref{tab:mesh} results. In Table~\ref{tab:mesh} voltage values are identified with V and their measure is $V$(Volts), the remaining ones are current values so their units are $A$(Amperes).
 
 \begin{table}[h]
   \centering
@@ -50,7 +50,7 @@ After solving the system with Octave tools we get the Table~\ref{tab:mesh} resul
     {\bf Name} & {\bf Value [A or V]} \\ \hline
     \input{../mat/octaveI_tab}
   \end{tabular}
-  \caption{ Results obtained by mesh analysis method with octave tool}
+  \caption{Results obtained by mesh analysis method with octave}
   \label{tab:mesh}
 \end{table}
 
@@ -74,13 +74,20 @@ The next equation was used for node 1 because node 1 and node 4 are connected to
 V_1-V_4=V_a 
 \end{equation}
 
-Secondly knowing that $V_c=K_c I_c$ and $V_c=V_3 - V_7$  it was concluded that for node 7 the equation obtained was $V_3 - V_7 = K_c (V_3 - V_6) G_6$
+Secondly knowing that $V_c=K_c I_c$ and $V_c=V_3 - V_7$  it was concluded that for node 7 the equation obtained was
 
-ATENÇÃO AQUI SFF
-Finally, node 3 is connected to 4 branches so applying Ohms Law to the 3 resistors and knowing that the current that passes through $V_c$ is $I_4=-I_d+(V_6-V_7)G_7$ we get the final and third equation that we need: (V4-V3)G4 + (V0-V3)G3 +(V5-V3)G5-Id+(V6-V7)G7=0 %ISTO NAO PODE SER VISTO ASSIM 
+\begin{equation}
+V_3 - V_7 = K_c (V_3 - V_6) G_6
+\end{equation}
+
+To find the third equation (Equation~\ref{eq:super}) it was used the continuity of the current to create a "super-knot" (nodes 3 and 7)
+
+\begin{equation}
+(V_4-V_3)G_4 + (V_0-V_3)G_3 +(V_5-V_3)G_5-I_d+(V_6-V_7)G_7=0
+\label{eq:super}
+\end{equation}
 
 The system of equations that will be solved is:
-
 
 \begin{centrar}
 \begin{bmatrix} 
@@ -116,7 +123,7 @@ I_d
 \end{centrar}
 
 
-After solving the system with Octave tools we get the Table~\ref{tab:nodal} results.
+After solving the system with Octave tools we get the Table~\ref{tab:nodal} results.In Table~\ref{tab:nodal} voltage values are identified with V and their measure is $V$(Volts), the remaining ones are current values so their units are $A$(Amperes).
 
 \begin{table}[h]
   \centering
