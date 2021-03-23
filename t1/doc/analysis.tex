@@ -5,9 +5,7 @@
 
 \subsection{Mesh Analysis Method}
 
-\hspace{0,5cm} 
-
-For this mesh method, circular currents are defined in the counter-clockwise direction and then the circuit is evaluated considering those new currents.
+\hspace{0,5cm} For this mesh method, circular currents are defined in the counter-clockwise direction and then the circuit is evaluated considering those new currents.
 
 Starting by number the nodes arbitrarily, assigning current names and directions to all branches also arbitrarily and defining one node as ground (GND). 
 
@@ -71,15 +69,15 @@ It was used the equations regarding the nodes 0, 2, 5, 6 therefore it was necess
 
 We chose to put the ground zero between three branches corresponding to the ones with $R_1, R_2$ and $R_3$ because it will facilitate the system of equations.
 
-The equation was used for node 1 because node 1 and node 4 are connected to an independent voltage source.
+The next equation was used for node 1 because node 1 and node 4 are connected to an independent voltage source.
 \begin{equation}
 V_1-V_4=V_a 
 \end{equation}
 
-Secondly knowing that $V_c=K_c I_c$ and $V_c=V_3 - V_7$  it was concluded that for node 7 that equation obtained was $V_3 - V_7 = K_c (V_3 - V_6) G_6$
+Secondly knowing that $V_c=K_c I_c$ and $V_c=V_3 - V_7$  it was concluded that for node 7 the equation obtained was $V_3 - V_7 = K_c (V_3 - V_6) G_6$
 
 ATENÇÃO AQUI SFF
-Finally, node 3 is connected to 4 branches so applying Ohms Law to the 3 resistors and knowing that the current that passes through $V_c$ is $I_4=-I_d+(V_6-V_7)G_7$ we get the final and third equation that we need: (V4-V3)G4 + (V0-V3)G3 +(V5-V3)G5-Id+(V6-V7)G7 %ISTO NAO PODE SER VISTO ASSIM 
+Finally, node 3 is connected to 4 branches so applying Ohms Law to the 3 resistors and knowing that the current that passes through $V_c$ is $I_4=-I_d+(V_6-V_7)G_7$ we get the final and third equation that we need: (V4-V3)G4 + (V0-V3)G3 +(V5-V3)G5-Id+(V6-V7)G7=0 %ISTO NAO PODE SER VISTO ASSIM 
 
 The system of equations that will be solved is:
 
