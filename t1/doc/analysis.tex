@@ -1,16 +1,17 @@
 \section{Theoretical Analysis}
 \label{sec:analysis}
 
-\hspace{0,5cm} In this section, the circuit shown in Figure~\ref{fig:circuito} is analysed theoretically, in terms of it's node voltages and mesh currents.
+\hspace{0,5cm} In this section, the circuit shown in Figure~\ref{fig:circuito} is analysed theoretically, in terms of its node voltages and mesh currents.
 
 \subsection{Mesh Analysis Method}
 
 \hspace{0,5cm} 
-For this mesh metod we defined circular currents in the counter-clockwise direction and then the circuit os evaluated considering those new currents.
 
-Starting by number the nodes arbitrarily, assigning current names and directions to all branches also arbitrarily and defining one node as ground (GND) 
+For this mesh method, circular currents are defined in the counter-clockwise direction and then the circuit is evaluated considering those new currents.
 
-Being mesh A the one with the resistors R1, R3 and R4, and the voltage source Va, the mesh B with the resistors R2, R3 and R5 and the voltage controlled current source Ib, the mesh C with the resistors R4, R6 and R7, and the current controlled voltage source Vc, and, at last, the mesh D with the resistor R5, the current source Id and the current controlled voltage source Vc. 
+Starting by number the nodes arbitrarily, assigning current names and directions to all branches also arbitrarily and defining one node as ground (GND). 
+
+Being mesh A the one with the resistors $R_1$, $R_3$ and $R_4$, and the voltage source $V_a$, the mesh B with the resistors $R_2$, $R_3$ and $R_5$ and the voltage controlled current source $I_b$, the mesh C with the resistors $R_4$, $R_6$ and $R_7$, and the current controlled voltage source $V_c$, and, at last, the mesh D with the resistor $R_5$, the current source $I_d$ and the current controlled voltage source $V_c$. 
 
 A system of equations obtained applying the Kirchhoff Current Law (KCL)to each mesh can be written as 
 
@@ -32,11 +33,15 @@ I_C
 \end{bmatrix}
 \end{equation}
 
-It was used 3 equations (4 meshes - 1 = 3 linearly independent equations) : Mesh A, Mesh C and an addicional equation which is $I_b = K_b V_b \textit{where} V_b = (I_B - I_A)R_3$ 
+It was used 3 equations (4 meshes - 1 = 3 linearly independent equations): Mesh A, Mesh C and an addicional equation which is 
 
-It's important to notice that D loop is independent from the restant ones so we don't need to determine the current $I_D$ as it is given on the inicial data.
+\begin{equation}
+I_b = K_b V_b \textit{where} V_b = (I_B - I_A)R_3
+\end{equation}
 
-Also we didn't use the mesh B because it had a independent current source so we couldn't aply the KVL.
+It's important to notice that D loop is independent of the remaining ones so it isn't don't need to determine the current $I_D$ as it is given on the initial data.
+
+Also, mesh B is not used because it has an independent current source so the KVL can't be applied.
 
 After solving the system with Octave tools we get the Table~\ref{tab:mesh} results.
 
@@ -54,7 +59,7 @@ After solving the system with Octave tools we get the Table~\ref{tab:mesh} resul
 
 \subsection{Nodal Analysis Method}
 
-\hspace{0,5cm} The Nodal Analysis Method is another general procedure analysing circuits using node voltages as the circuit variables. 
+\hspace{0,5cm} The Nodal Analysis Method is another general procedure for analysing circuits using node voltages as the circuit variables. 
 
 To find the nodal voltages we chose 7 equations (8 nodes - 1 = 7 linearly independent equations) that comprise:
 \begin{itemize}
@@ -62,17 +67,22 @@ To find the nodal voltages we chose 7 equations (8 nodes - 1 = 7 linearly indepe
 \item Additional equations for nodes related by voltage sources.
 \end{itemize}
 
-It was used the equations regarding the nodes 0, 2, 5, 6 therefore it was necessary tree additional equations.
+It was used the equations regarding the nodes 0, 2, 5, 6 therefore it was necessary three additional equations.
 
-We chose to put the ground zero between tree branches ccorresponding to the ones with $R_1, R_2$ and $R_3$ because it will facilitate the system of equations .
+We chose to put the ground zero between three branches corresponding to the ones with $R_1, R_2$ and $R_3$ because it will facilitate the system of equations.
 
-the first equation V1-V4=Va was used for node 1 because node 1 and node 4 are connected to a independent voltage source
+The equation was used for node 1 because node 1 and node 4 are connected to an independent voltage source.
+\begin{equation}
+V_1-V_4=V_a 
+\end{equation}
 
-secondly knowing that Vc=Kc*Ic and Vc=V3-V7  it was concluded that for node 7 tha equation obtained was V3-V7=Kc(V3-V6)*G6
+Secondly knowing that $V_c=K_c I_c$ and $V_c=V_3 - V_7$  it was concluded that for node 7 that equation obtained was $V_3 - V_7 = K_c (V_3 - V_6) G_6$
 
-Finally node 3 is connected to 4 branches so applying  Ohms law to the 3 resistors and knowing that the current that passes through Vc is I4=-Id+(V6-V7)G7 we get the final and thrid equation tha we need: (V4-V3)G4 + (V0-V3)G3 +(V5-V3)G5-Id+(V6-V7)G7
+ATENÇÃO AQUI SFF
+Finally, node 3 is connected to 4 branches so applying Ohms Law to the 3 resistors and knowing that the current that passes through $V_c$ is $I_4=-I_d+(V_6-V_7)G_7$ we get the final and third equation that we need: (V4-V3)G4 + (V0-V3)G3 +(V5-V3)G5-Id+(V6-V7)G7 %ISTO NAO PODE SER VISTO ASSIM 
 
 The system of equations that will be solved is:
+
 
 \begin{equation}
 \begin{bmatrix} 

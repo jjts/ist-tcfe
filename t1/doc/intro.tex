@@ -7,19 +7,19 @@
 
 The objective of this laboratory assignment is to study a circuit containing seven resistors, one voltage source, one current source, one current controlled voltage source and one voltage controlled current source. The elementary meshes are named after the current to which they are attributed and so there are four of them.
 
-The current controlled voltage source Vc is calculated by multiplying Kc with the current Ic, whereas the voltage controlled current source Ib can be determined by multiplying Kb with the voltage source Vb.
+The current controlled voltage source $V_c$ is calculated by multiplying $K_c$ with the current $I_c$, whereas the voltage controlled current source $I_b$ can be determined by multiplying $K_b$ with the voltage source $V_b$.
 
 The display of this circuit can be seen in Figure~\ref{fig:circuito}.
 
-In Section~\ref{sec:analysis} we will analise theorically the circuit by both Method Analysis and present the results obtained by Octave.
+In Section~\ref{sec:analysis} it will be analysed theoretically the circuit by both Nodal and Mesh Method ending with the presentation of the results obtained by Octave.
 
-Secondly, in Section~\ref{sec:simulation} we will simulate the circuit using ngspice, present the results obtained and compare them with the ones gathered from Section~\ref{sec:analysis}.
+Secondly, in Section~\ref{sec:simulation} it will be simulated the circuit using ngspice, the results obtained will be presented and compared with the ones gathered from Section~\ref{sec:analysis}.
 
 The conclusions of this study are outlined in Section~\ref{sec:conclusion}.
 
 \begin{figure}[h] \centering
 \includegraphics[width=0.7\linewidth]{circuito.pdf}
-\caption{Circuit with the nodes} %mudar legendaaaaaaaaaaa!!!!!!
+\caption{Circuit} %mudar legendaaaaaaaaaaa!!!!!!
 \label{fig:circuito}
 \end{figure}
 
@@ -50,7 +50,7 @@ $K_b = 7.1497941196 $
 $K_c = 8.12593642585 $
 \end{center}
 
-The units of the elements whose name starts with R (the resistors) are kOhm (kiloohm), the ones that start with I are expressed in mA (miliampere) and the ones starting with V are expressed in V (volts). While Kb is given in mS (milisiemens), Kc is also given in kOhm.
+The units of the elements whose name starts with R (the resistors) are $k\Omega$ (kiloohm), the ones that start with I are expressed in $mA$ (miliampere) and the ones starting with V are expressed in $V$ (volts). While Kb is given in $mS$ (milisiemens), Kc is also given in $k\Omega$.
 
 These values where obtained using the \textit{Python} script using the lowest student number on our group - 95785.
 
