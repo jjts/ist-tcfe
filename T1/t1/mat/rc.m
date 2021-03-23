@@ -3,7 +3,6 @@ clear all
 
 %%EXAMPLE SYMBOLIC COMPUTATIONS
 
-pkg load symbolic
  R1=1.00781211614e3
  R2=2.003112223204e3
  R3=3.04503555589e3
@@ -41,10 +40,12 @@ V6=F(6,1)
 V7=F(7,1)
 
  fid=fopen("data_current_tab.tex","w")
-fprintf(fid,"@$I_{a}$ & %f \\\\ \hline \n",Ia)
-fprintf(fid,"@$I_{b}$ & %f \\\\ \hline \n",Ib)
-fprintf(fid,"@$I_{c}$ & %f \\\\ \hline \n",Ic)
-fprintf(fid,"@$I_{d}$ & %f \\\\ \hline \n",Id)
+
+%% current(mA) 
+fprintf(fid,"@$I_{a}$ & %f \\\\ \hline \n",1000*Ia)
+fprintf(fid,"@$I_{b}$ & %f \\\\ \hline \n",1000*Ib)
+fprintf(fid,"@$I_{c}$ & %f \\\\ \hline \n",1000*Ic)
+fprintf(fid,"@$I_{d}$ & %f \\\\ \hline \n",1000*Id)
 fclose(fid)
 
  fid=fopen("data_voltage_tab.tex","w")
