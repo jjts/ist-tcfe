@@ -4,6 +4,7 @@ format long e
 
 pkg load symbolic
 
+#Declaration of the values given by the python script
 R1 = 1.03431507833e003;
 R2 = 2.02853090731e003;
 R3 = 3.1462050633e003;
@@ -16,11 +17,17 @@ Id = 1.01455683569e-003;
 Kb = 7.1497941196e-003;
 Kc = 8.12593642585e003;
 
-A = [R1+R3+R4,-R3,-R4;-R4,0,R4+R6+R7-Kc;-Kb*R3,Kb*R3-1,0]
-B = [-Va;0;0]
+#Matrix of the mesh method and additional equations
+A = [R1+R3+R4,-R3,-R4;...
+-R4,0,R4+R6+R7-Kc;...
+-Kb*R3,Kb*R3-1,0];
+#Matrix of the results
+B = [-Va;0;0];
 
+#Matrix of the current values
 I = A\B
 
+#Atribuitions of the values to the variables and other calculations
 printf ("octaveI_TAB\n");
 IA = I(1,1)
 IB = I(2,1)
@@ -32,8 +39,7 @@ Vb = Ib/Kb
 Vc = Kc*Ic
 printf ("octaveI_END\n");
 
-
-
+#Calculation of the G values of each resistor
 G1 = 1/R1;
 G2 = 1/R2;
 G3 = 1/R3;
@@ -42,6 +48,7 @@ G5 = 1/R5;
 G6 = 1/R6;
 G7 = 1/R7;
 
+#Matrix of the node method and additional equations
 C = [1,0,0,0,0,0,0,0;...
 -G1-G2-G3,G1,G2,G3,0,0,0,0;...
 Kb+G2,0,-G2,-Kb,0,0,0,0;...
@@ -51,9 +58,13 @@ Kb+G2,0,-G2,-Kb,0,0,0,0;...
 0,0,0,1,-Kc*G6,0,Kc*G6,-1;...
 G3,0,0,-G4-G3-G5,G4,G5,G7,-G7];
 
+#Matrix of the results
 D = [0;0;0;Va;-Id;0;0;Id];
 
+#Matrix of the voltage values
 V = C\D;
+
+#Atribuitions of the values to the variables and other calculations
 printf ("octavev_TAB\n");
 V0 = V(1,1)
 V1 = V(2,1)
