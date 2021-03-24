@@ -1,0 +1,28 @@
+Ngspice T1
+
+.options savecurrents
+
+V1  v1  v4   5.00120775651
+I1  v8  v6  1.03136220214m
+VT  v4  v0  0
+R1  v2  v1  1.01080769792K
+R2  v3  v2  2.07664633274K
+R3  v2  GND  3.12595649013K
+R4  GND  v4  4.18722214507K
+R5  v6  GND  3.0841699201K
+R6  v7  v0  2.00179338129K
+R7  v8  v7  1.04556537884K
+G1  v6  v3  v2  GND  7.12593545434m
+H1  GND  v8  VT  8.24048597287K
+
+.control
+op
+
+echo  "op_TAB"
+print all
+echo  "op_END"
+
+quit
+.endc
+.end
+

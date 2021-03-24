@@ -1,0 +1,45 @@
+\section{Simulation Analysis}
+\label{sec:simulation}
+\paragraph{}
+
+\par This simulation was run through a software called NGSpice. From it, the results obtained were the following. 
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|}
+    \hline    
+    {\bf Name} & {\bf Value [A or V]} \\ \hline
+    \input{../sim/op_tab}
+  \end{tabular}
+  \caption{Operating point. A variable preceded by @ is of type {\em current}
+    and expressed in Ampere; other variables are of type {\it voltage} and expressed in
+    Volt.}
+  \label{tab:op}
+\end{table}
+
+\par Such results are sufficient for a thourough analysis of the entire circuit. 
+\par Firstly, by noting that $V_b$ is the imposed voltage between nodes 2 and 5, one concludes that $V_b$ is then given by $V_2$ given that node 5 is attached to ground. Likewise, and given that $V_c$ is the imposed voltage between nodes 5 and 8 and since node 5 is connected to ground, $V_c$ is then given by negative $V_8$.
+
+\begin{equation}
+	V_b=V_{2}
+\end{equation}
+\begin{equation}
+	V_c=-V_{8}
+\end{equation}
+
+\par Secondly, by noting that currents passing through $R_1$, $R_2$ and $R_6$ are equal to $I_a$, $I_b$ and $I_c$ respectively, one can directly apply Ohms Law to determine these currents. While $I_b$ and $I_c$ could be determined through direct application of the law, it could also be determined by using the relation described in equations 3 and 4. 
+\par From such calculations, the following results were obtained. 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+        $I_a$ & 2.40136e-04\\ \hline
+        $I_b$ & 2.51245e-04\\ \hline
+        $I_c$ & 9.76838e-04\\ \hline
+        $V_b$ & 3.4437e-02\\ \hline
+        $V_c$ & 7.979210e+00\\ \hline
+    \end{tabular}
+    \caption{Table of results for the simulation in A and V}
+\end{table}
+
+
+
