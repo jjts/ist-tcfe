@@ -23,7 +23,7 @@ class Prob:
         self.weight = weight
         
     def printProb(self):
-        print "Values: ",
+        print "Values: \n",
         for i in range(len(self.varList)):
             self.varList[i].printVar()
         print "\n\n"
