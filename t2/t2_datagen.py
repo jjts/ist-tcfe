@@ -54,13 +54,13 @@ class DataSet:
         self.prob.addVar(Var("Vs", 5, 5))
         self.prob.addVar(Var("C",  1, 5))
         self.prob.addVar(Var("Kb", 7, 5))
-        self.prob.addVar(Var("Kc", 8, 5))
+        self.prob.addVar(Var("Kd", 8, 5))
 
         self.probList.append(self.prob)
     
     def printDataSet(self):
         nprobs = len(self.probList)
-        print "Units for the values: V, mA, kOhm and mS\n\n"
+        print "Units for the values: V, mA, kOhm, mS and uF\n\n"
         for i in range(nprobs):
             self.probList[i].printProb()
 
