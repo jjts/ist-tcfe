@@ -60,7 +60,7 @@ class DataSet:
     
     def printDataSet(self):
         nprobs = len(self.probList)
-        print "Units for the values: V, mA, kOhm and mS\n\n"
+        print "Units for the values: V, mA, kOhm, mS and uF\n\n"
         for i in range(nprobs):
             self.probList[i].printProb()
 
