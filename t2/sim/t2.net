@@ -1,0 +1,83 @@
+Trabalho 1 
+* NGSPICE simulation script
+* BJT amp with feedback
+*
+
+* forces current values to be saved
+.options savecurrents
+
+*independent sources
+ 
+* supply voltage
+Va 1 0 5.00439410964 
+
+*current sources 
+Id 7 5 1.04536428769m
+
+*Ground
+VGround 0 10 0  
+
+*resistances
+
+R1 1 2 1.03919759193k 
+	
+R2 3 2 2.06836523173k
+
+R3 4 2 3.03375774261k
+
+R4 0 4 4.12779067183k
+
+R5 5 4 3.11985677803k
+
+R6 0 6 2.04513887844k
+
+R7 8 7 1.04289965713k
+
+*Dependent sources 
+
+
+*CCVS
+
+*Control current 
+
+VIc 6 8 0 
+
+*Source 
+HVc 4 7 VIc 8.23640363075m
+
+*VCCS
+
+GIb 5 3 (2, 4) 7.25705461539m
+
+
+
+.control
+
+*makes plots in color
+set hcopypscolor=0
+set color0=white
+set color1=black
+set color2=red
+set color3=blue
+set color4=violet
+set color5=rgb:3/8/0
+set color6=rgb:4/0/0
+
+op
+
+echo "********************************************"
+echo  "Operating point"
+echo "********************************************"
+print HVc
+print @R1[i]
+
+echo  "op_TAB"
+print all
+echo  "op_END"
+
+
+
+quit
+.endc
+
+.end

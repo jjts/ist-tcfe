@@ -1,0 +1,24 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+In this laboratory assignment the objective of analysing a simple circuit has been
+achieved. The analysis of the circuit was done both theoretically, 
+using  the Ocatve maths tool to solve the systems of equations obtained by using the mesh 
+and node analysis, and by circuit simulation, using Ngspice. The simulation results perfectly 
+matched the theoretical results. For example, if we look at the results tables for ngspice and octave we may note that the 
+following relations hold:
+\begin{equation*}
+    y_1 = -r1[i]
+\end{equation*}
+\begin{equation*}
+    y_2 = r2[i]
+\end{equation*}
+\begin{equation*}
+    y_3 = r6[i] = r7[i]
+\end{equation*}
+\begin{equation*}
+    C_i = 1/r[i]
+\end{equation*}
+which is to be expected.
+The reason for this perfect match is that the analysed circuit is linear,
+ so that any method for analysing consists in solving a linear system of equations. 
