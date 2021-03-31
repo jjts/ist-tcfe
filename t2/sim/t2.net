@@ -8,47 +8,47 @@ Trabalho 1
 
 *independent sources
  
-* supply voltage
-Va 1 0 5.00439410964 
+* * supply voltage
+* Va 1 0 5.00439410964 
 
-*current sources 
-Id 7 5 1.04536428769m
+* *current sources 
+* Id 7 5 1.04536428769m
 
-*Ground
-VGround 0 10 0  
+* *Ground
+* VGround 0 10 0  
 
-*resistances
+* *resistances
 
-R1 1 2 1.03919759193k 
+* R1 1 2 1.03919759193k 
 	
-R2 3 2 2.06836523173k
+* R2 3 2 2.06836523173k
 
-R3 4 2 3.03375774261k
+* R3 4 2 3.03375774261k
 
-R4 0 4 4.12779067183k
+* R4 0 4 4.12779067183k
 
-R5 5 4 3.11985677803k
+* R5 5 4 3.11985677803k
 
-R6 0 6 2.04513887844k
+* R6 0 6 2.04513887844k
 
-R7 8 7 1.04289965713k
+* R7 8 7 1.04289965713k
 
-*Dependent sources 
+* *Dependent sources 
 
 
-*CCVS
+* *CCVS
 
-*Control current 
+* *Control current 
 
-VIc 6 8 0 
+* VIc 6 8 0 
 
-*Source 
-HVc 4 7 VIc 8.23640363075m
+* *Source 
+* HVc 4 7 VIc 8.23640363075m
 
-*VCCS
+* *VCCS
 
-GIb 5 3 (2, 4) 7.25705461539m
-
+* GIb 5 3 (2, 4) 7.25705461539m
+.INCLUDE ngspice_data_1.txt
 
 
 .control
@@ -68,14 +68,14 @@ op
 echo "********************************************"
 echo  "Operating point"
 echo "********************************************"
-print HVc
-print @R1[i]
+* print HVc
+* print @R1[i]
 
 echo  "op_TAB"
 print all
 echo  "op_END"
 
-
+* do not forget to print v6-v8 to use later
 
 quit
 .endc

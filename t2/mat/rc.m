@@ -30,7 +30,7 @@ R1 = str2double(vector(1))
 R2 = str2double(vector(2)) 
 R3 = str2double(vector(3)) 
 R4 = str2double(vector(4))      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-R5 = str2double(vector(5))      %    UNITS NEED TO BE CHANGED
+R5 = str2double(vector(5))      %    UNITS ARE SAME AS THE ONES FROM DATAGEN.PY
 R6 = str2double(vector(6))      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 R7 = str2double(vector(7)) 
 Vs = str2double(vector(8)) 
@@ -42,26 +42,35 @@ fclose(fid);
 
 
 
-#-------------------------- Writting in file to include in ngspice-----------------------------------
+#-------------------------- Writting in file to include in ngspice first simulation-----------------------------------
 
 
 % ngspice_path = [this_file_path '../sim/ngdata.txt'];
-fid = fopen ('../sim/ngspice_data.txt', "w+");
+fid = fopen ('../sim/ngspice_data_1.txt', "w+");
 
-fprintf(fid, "R1 1 2 %f \n", R1)
-fprintf(fid, "R2 1 2 %f \n", R2)
-fprintf(fid, "R3 1 2 %f \n", R3)
-fprintf(fid, "R4 1 2 %f \n", R4)    %%%%%%%%%%% INCERT DATA AS IF IN NGSPICE
-fprintf(fid, "R5 1 2 %f \n", R5)      
-fprintf(fid, "R6 1 2 %f \n", R6)
-fprintf(fid, "R7 1 2 %f \n", R7)
+fprintf(fid, "R1 1 2 %fk \n", R1)
+fprintf(fid, "R2 2 3 %fk \n", R2)
+fprintf(fid, "R3 2 5 %fk \n", R3)    %---------------
+fprintf(fid, "R4 0 5 %fk \n", R4)    %  Resistências
+fprintf(fid, "R5 5 6 %fk \n", R5)    %---------------
+fprintf(fid, "R6 na 7 %fk \n", R6)
+fprintf(fid, "R7 7 8 %fk \n", R7)
+
+fprintf(fid, "Vs 1 0 %f \n", Vs)         % Voltage source     
+fprintf(fid, "Va 0 na 0V \n")           % V auxiliar
+fprintf(fid, "Gb 6 3 2 5 %f \n", Kb)    % dependent current dource
+fprintf(fid, "Hd 5 8 Va %f \n", Kd)      % dependent voltage source
+
+fprintf(fid, "C 6 8 %fuF \n", C)      % Capacitor
 
 
 fclose (fid);
 
 #------------------nodal analysis------------------------
 
-
+%
+%
+%
 
 %_____________table printing
 
