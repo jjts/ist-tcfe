@@ -1,6 +1,12 @@
 close all
 clear all
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                                     %
+%  CAREFULL -> if testing separately make sure file data.txt exists in main directory %
+%                                                                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 #------------------ Getting values from data.txt------------------------ WORKS
 
 this_file_path = fileparts(mfilename('fullpath'));
@@ -18,14 +24,14 @@ for n = 1:length(lines)
     endif
 end 
 
-vector; #=cell2mat(vector) #-------remove comma to test output 
+vector;
 
 R1 = str2double(vector(1)) 
 R2 = str2double(vector(2)) 
 R3 = str2double(vector(3)) 
-R4 = str2double(vector(4)) 
-R5 = str2double(vector(5)) 
-R6 = str2double(vector(6)) 
+R4 = str2double(vector(4))      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+R5 = str2double(vector(5))      %    UNITS NEED TO BE CHANGED
+R6 = str2double(vector(6))      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 R7 = str2double(vector(7)) 
 Vs = str2double(vector(8)) 
 C = str2double(vector(9)) 
@@ -34,9 +40,24 @@ Kd = str2double(vector(11))
 
 fclose(fid);
 
-#-------------------------------- ---------------------------------------
 
 
+#-------------------------- Writting in file to include in ngspice-----------------------------------
+
+
+% ngspice_path = [this_file_path '../sim/ngdata.txt'];
+fid = fopen ('../sim/ngspice_data.txt', "w+");
+
+fprintf(fid, "R1 1 2 %f \n", R1)
+fprintf(fid, "R2 1 2 %f \n", R2)
+fprintf(fid, "R3 1 2 %f \n", R3)
+fprintf(fid, "R4 1 2 %f \n", R4)    %%%%%%%%%%% INCERT DATA AS IF IN NGSPICE
+fprintf(fid, "R5 1 2 %f \n", R5)      
+fprintf(fid, "R6 1 2 %f \n", R6)
+fprintf(fid, "R7 1 2 %f \n", R7)
+
+
+fclose (fid);
 
 #------------------nodal analysis------------------------
 
