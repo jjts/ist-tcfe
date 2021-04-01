@@ -29,6 +29,8 @@ Ce emit 0 10uF
 
 .model P2model NPN(Bf=200, CJE=12pF, CJC=2pF)
 
+.op
+
 .end
 
 .control
