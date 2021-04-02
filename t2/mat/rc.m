@@ -153,11 +153,30 @@ fprintf(fid, ".param R6 = %.11f\n", R6)
 fprintf(fid, ".param R7 = %.11f\n\n", R7)
 fprintf(fid, ".param Vs = 0V\n")
 fprintf(fid, ".param Vx = %.6fV\n\n", Vx)
-fprintf(fid, ".param c = 1.04536428769uF\n\n")
 fprintf(fid, ".param Kb = %.11f\n", Kb)
 fprintf(fid, ".param Kd = %.11f\n", Kd)
 
 fclose (fid);
 
 
+#-------------------------- Writting in file to include in ngspice THIRD simulation-----------------------------------
 
+
+% ngspice_path = [this_file_path '../sim/ngdata.txt'];
+fid = fopen ('../sim/ngspice_data_3.txt', "w+");
+
+fprintf(fid, ".param R1 = %.11f\n", R1)
+fprintf(fid, ".param R2 = %.11f\n", R2)
+fprintf(fid, ".param R3 = %.11f\n", R3)
+fprintf(fid, ".param R4 = %.11f\n", R4)
+fprintf(fid, ".param R5 = %.11f\n", R5)
+fprintf(fid, ".param R6 = %.11f\n", R6)
+fprintf(fid, ".param R7 = %.11f\n\n", R7)
+fprintf(fid, ".param Vs = 0V\n")
+fprintf(fid, ".param C1 = %.11fuF\n\n", C)
+fprintf(fid, ".param Kb = %.11f\n", Kb)
+fprintf(fid, ".param Kd = %.11f\n", Kd)
+
+fclose (fid);
+
+%-------------------------------------------------------------------------------------

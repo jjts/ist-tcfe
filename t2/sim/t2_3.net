@@ -1,4 +1,4 @@
-Trabalho 2 alinea 2
+Trabalho 1 alinea 3
 * NGSPICE simulation script
 * BJT amp with feedback
 *
@@ -6,13 +6,9 @@ Trabalho 2 alinea 2
 * forces current values to be saved
 .options savecurrents
 
-
 *valor das variaveis
-.INCLUDE ngspice_data_2.txt
+.INCLUDE ngspice_data_3.txt
 
-
-
-*Descrição do circuito
 va 0 na 0V ; auxiliar voltage source
 
 vs 1 0 {Vs}
@@ -25,17 +21,25 @@ R5 5 6 {R5}
 R6 na 7 {R6}
 R7 7 8 {R7}
 
-Vx 6 8 {Vx}
-
 Gb 6 3 2 5 {Kb} ; current source
 Hd 5 8 va {Kd} ; voltage source
 
+CC 6 8 {C1} 
+.ic v(6) = {V6in}
+.ic v(8)= {V8in}
 
-.op
-
-.end
 
 .control
+
+*makes plots in color
+set hcopypscolor=0
+set color0=white
+set color1=black
+set color2=red
+set color3=blue
+set color4=violet
+set color5=rgb:3/8/0
+set color6=rgb:4/0/0
 
 
 op
@@ -43,18 +47,14 @@ op
 echo "********************************************"
 echo  "Operating point"
 echo "********************************************"
-* print HVc
-* print @R1[i]
 
-echo  "op2_TAB"
-print all
-echo  "op2_END"
+echo "********************************************"
+echo  "Transient analysis"
+echo "********************************************"
+tran 1e-5 20e-3 
 
-echo  "sim3_VAL"
-print v(6)
-print v(8)
-echo  "sim3_VAL"
-* do not forget to print v6-v8 to use later
+hardcopy trans_alinea3.ps v(6)
+echo trans_alinea3_FIG
 
 quit
 .endc

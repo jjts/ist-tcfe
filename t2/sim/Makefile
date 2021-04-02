@@ -1,6 +1,6 @@
 FILES = t2_1.net t2_2.net 
 
-all: ngspice.log
+all: ngspice.log prep3
 	$(eval NGSFIGS=$(shell grep _FIG $< | sed 's/_FIG//g' | sed ':a;N;$!ba;s/\n/ /g'))
 	$(eval NGSFIGPS=$(addsuffix .ps, $(NGSFIGS)))
 	$(foreach i, $(NGSFIGPS), ps2pdf $i;)
@@ -9,6 +9,12 @@ all: ngspice.log
 
 ngspice.log: $(FILES) 
 	for f in $^; do ngspice -b $$f -o test.log; cat test.log >> $@;done
+	@rm test.log
+
+prep3: prep3.m
+	octave $< >> ngspice_data_3.txt
+	ngspice -b t2_3.net -o test.log
+	cat test.log >> ngspice.log
 	@rm test.log
 
 clean:
