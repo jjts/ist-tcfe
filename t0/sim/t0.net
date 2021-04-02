@@ -29,6 +29,10 @@ Ce emit 0 10uF
 
 .model P2model NPN(Bf=200, CJE=12pF, CJC=2pF)
 
+.op
+
+.end
+
 .control
 
 *makes plots in color
@@ -84,7 +88,5 @@ echo "********************************************"
 hardcopy zim.ps abs(v(coll)/((v(1)-v(2))/1k))
 echo zim_FIG
 
-quit
 .endc
 
-.end
