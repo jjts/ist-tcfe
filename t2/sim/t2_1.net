@@ -30,11 +30,9 @@ echo "********************************************"
 * print HVc
 * print @R1[i]
 
-echo  "op_TAB"
+echo  "op1_TAB"
 print all
-echo  "op_END"
-
-* do not forget to print v6-v8 to use later
+echo  "op1_END"
 
 quit
 .endc

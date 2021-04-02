@@ -1,4 +1,4 @@
-Trabalho 2 alinea 1
+Trabalho 2 alinea 2
 * NGSPICE simulation script
 * BJT amp with feedback
 *
@@ -7,20 +7,36 @@ Trabalho 2 alinea 1
 .options savecurrents
 
 
-.INCLUDE ngspice_data_2.txt 
 
+.INCLUDE ngspice_data_2.txt
+
+
+
+*Descrição do circuito
+va 0 na 0V ; auxiliar voltage source
+
+vs 1 0 {Vs}
+
+R1 1 2 {R1}
+R2 2 3 {R2}
+R3 2 5 {R3}
+R4 0 5 {R4}
+R5 5 6 {R5}
+R6 na 7 {R6}
+R7 7 8 {R7}
+
+Vx 6 8 {Vx}
+
+Gb 6 3 2 5 {Kb} ; current source
+Hd 5 8 va {Kd} ; voltage source
+
+
+.op
+
+.end
 
 .control
 
-*makes plots in color
-set hcopypscolor=0
-set color0=white
-set color1=black
-set color2=red
-set color3=blue
-set color4=violet
-set color5=rgb:3/8/0
-set color6=rgb:4/0/0
 
 op
 
@@ -30,9 +46,9 @@ echo "********************************************"
 * print HVc
 * print @R1[i]
 
-echo  "cool_TAB"
+echo  "op2_TAB"
 print all
-echo  "cool_END"
+echo  "op2_END"
 
 * do not forget to print v6-v8 to use later
 
