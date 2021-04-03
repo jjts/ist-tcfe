@@ -24,7 +24,7 @@ R7 7 8 {R7}
 Gb 6 3 2 5 {Kb} ; current source
 Hd 5 8 va {Kd} ; voltage source
 
-CC 6 8 {C1} 
+C 6 8 {C1} 
 .ic v(6) = {V6in}
 .ic v(8)= {V8in}
 
@@ -44,9 +44,6 @@ set color6=rgb:4/0/0
 
 op
 
-echo "********************************************"
-echo  "Operating point"
-echo "********************************************"
 
 echo "********************************************"
 echo  "Transient analysis"
