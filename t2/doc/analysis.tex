@@ -1,0 +1,265 @@
+\section{Theoretical Analysis}
+\label{sec:analysis}
+\paragraph{}
+\par In this section, the circuit shown in Figure \ref{circuit} is analysed
+theoretically. The known values in $kOhm$, $V$, $mS$, $\mu F$ can be checked in the table below. 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+        \input{../mat/data.tex}
+    \end{tabular}
+    \caption{Known Data}
+    \label{data}
+\end{table}
+\subsection{For $t<0$}
+\paragraph{}
+\par  For $t<0$, $v_s=V_s$, according to the given equation. Futhermore the capacitor acts like an open circuit since it is fully charged and no current goes through it. Therefore, $I_c = 0$.
+\par Applying the node method, it is possible to solve the circuit with the information upwards, since all the other information is given in \ref{circuit}.
+The system used to solve this circuit is shown below.
+$$
+\begin{cases} 
+	V_1 = V_s \\ 
+	V_d = V_5 -V_8 \\
+	V_b = V_2 - V_5 \\
+	\frac{V_7 K_d}{R_6} = V_d \\ 
+	\frac{V_1 - V_2}{R_1} + \frac{V_3 - V_2}{R_2} - \frac{V_5 - V_2}{R_3}  = 0 \\
+	\frac{V_2 - V_3}{R_2} - K_b V_b = 0 \\
+	\frac{-V_7}{R_6} + -\frac{V_8 - V_7}{R_7} = 0 \\
+	\frac{V_7 - V_8}{R_7} - \frac{V_5}{R_4} + \frac{V_6 - V_5}{R_5} + \frac{V_2 - V_5}{R_3}= 0 \\
+	\frac{V_5 - V_6}{R_5} + K_b V_b = 0 
+\label{system1}
+\end{cases}
+$$
+
+Using Octave software it was possible to collect the data shown in table \ref{table1a} and \ref{table1b}.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+        \input{../mat/nodes1a.tex}
+    \end{tabular}
+    \caption{Voltages in all nodes in V}
+    \label{table1a}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+        \input{../mat/nodes1b.tex}
+    \end{tabular}
+    \caption{Currents in all branches in mA}
+    \label{table1b}
+\end{table}
+
+The voltages and currents were then calculated. 
+
+\subsection{For $t=0$}
+\paragraph{}
+
+\par In order to solve the second exercise, firstly it is necessary to replace the capacitor by a voltage source $Vx$, which will impose a voltage of exactly what was determined for the capacitor in the first exercise. This is the first step to compute de $R_eq$ as seen from the capacitor because now it is possible to run a new nodal analysis with $vs$ set to 0 in order to determine $I_x$, which is the current that goes through the capacitor.
+\par Solving the matrix below it is possible to determine the values in \ref{system 2} and thus determine $R_{eq}$.
+
+\par Compute $R_{eq}$ is fundamental because this allows to determine the natural solution of the system through the $RC$ constant. This application will be demenstrated in the next exercise.
+
+$$
+\begin{cases} 
+	V_1 = V_s \\ 
+	V_d = V_5 -V_8 \\
+	V_b = V_2 - V_5 \\
+	V_x = V_6 - V_8 \\
+	\frac{V_7 K_d}{R_6} = V_d \\ 
+	\frac{V_1 - V_2}{R_1} + \frac{V_3 - V_2}{R_2} - \frac{V_5 - V_2}{R_3}  = 0 \\
+	\frac{V_2 - V_3}{R_2} - K_b V_b = 0 \\
+	\frac{-V_7}{R_6} -\frac{V_8 - V_7}{R_7} = 0 \\
+	\frac{V_7 - V_8}{R_7} - \frac{V_5}{R_4} + \frac{V_6 - V_5}{R_5} + \frac{V_2 - V_5}{R_3} - \frac{V_x}{R_{eq}}= 0 \\
+	\frac{V_5 - V_6}{R_5} + K_b V_b + \frac{V_x}{R_{eq}}= 0 
+\label{system 2}
+\end{cases}
+$$
+
+
+
+Through Octave it was possible to collect the data shown in table \ref{table2a} and \ref{table2b}.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+        \input{../mat/nodes2a.tex}
+    \end{tabular}
+    \caption{Voltages in all nodes in V}
+    \label{table2a}
+\end{table}
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+        \input{../mat/nodes2b.tex}
+    \end{tabular}
+    \caption{Currents in all branches in mA}
+    \label{table2b}
+\end{table}
+
+
+
+
+\par The value for $V_x$ was estabilished as $V_6 - V_8$ being $V_6$ and $V_8$ determined in the previous section.
+
+\subsection{Natural Solution}
+\paragraph{}
+
+\par Now the task was to determine the natural solution for $V_6$. Using $V_x$, determined in the previous exercise, as the initial condition, it was possible, applying \ref{equationnat}, since this is a RC circuit, to determine the natural solution, plotted in figure \ref{natural ana}.
+
+\begin{equation}
+	V_{6n} = A e^{\frac{-t}{\tau}}  \ \ \  \ \ \ \ \tau = R_{eq} C
+	\label{equationnat}
+\end{equation}
+
+
+
+\begin{figure}[H]
+    \includegraphics[width=0.5\linewidth]{naturalana.eps}
+    \centering
+    \caption{Natural Solution}
+    \label{natural ana}
+\end{figure}
+
+\subsection{Forced Solution}
+\paragraph{}
+
+\par For this section of the analysis, one was asked to find the forced solution $V_{6}f(t)$ for a frequency of 1000Hz. In order to simplify the calculations, and as suggested, a phasor with constant $V_s$ of 1V was used.
+A similar node analysis was ran, using $V_s$ as the voltage source, and replacing the capacitance of capacitor $C$ with its impendance $Z$. Like so, the following nodal equations were derived:
+
+\begin{equation}
+	Z_c = \frac{1}{j \omega C}     \ \ \  \ \ \ \ \  \ \ \ \ \ \ \ \omega = 2 \pi f
+\end{equation}
+
+
+$$
+\begin{cases} 
+	V_1 = V_s \\ 
+	V_d = V_5 -V_8 \\
+	V_b = V_2 - V_5 \\
+	\frac{V_7 K_d}{R_6} = V_d \\ 
+	\frac{V_1 - V_2}{R_1} + \frac{V_3 - V_2}{R_2} - \frac{V_5 - V_2}{R_3}  = 0 \\
+	\frac{V_2 - V_3}{R_2} - K_b V_b = 0 \\
+	\frac{-V_7}{R_6} -\frac{V_8 - V_7}{R_7} = 0 \\
+	\frac{V_7 - V_8}{R_7} - \frac{V_5}{R_4} + \frac{V_6 - V_5}{R_5} + \frac{V_2 - V_5}{R_3} - \frac{V_6 - V_8}{Z_c}= 0 \\
+	\frac{V_5 - V_6}{R_5} + K_b V_b + \frac{V_8 - V_6}{Z_c}= 0 
+\label{system 4}
+\end{cases}
+$$
+\par Spliting the complex numbers and determining the angles and the modules, the two following rables were made with the following equations:
+
+\begin{equation}
+	V_{complex_i} = V_i e^{-j phase(i)}
+\end{equation}
+
+\par With angle and abs commands in octave we were able to calculate the following values.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+        \input{../mat/nodes4a.tex}
+    \end{tabular}
+    \caption{Complex Amplitudes}
+    \label{table4a}
+\end{table}
+
+\paragraph{}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+        \input{../mat/nodes4b.tex}
+    \end{tabular}
+    \caption{Phases}
+    \label{table4b}
+\end{table}
+
+
+Therefore, we can state that:
+
+\begin{equation}
+	V_6 = 5.742283e-01 e^{-j 3.141434e+00}
+\end{equation}
+
+\subsection{Natural and Forced Superimposed}
+\paragraph{}
+
+\par By converting the phasor to real time functions, a function to evaluate $V_6$, for $t>0$, was found by simply adding the natural and forced solutions, previously calculated for a frequency of 1000Hz. On the other hand, the equation for $V_s(t)$ for $t>0$ was already implicit on the initial circuit diagram. Both equations are written below.
+
+\begin{equation}
+	V_{ifinal} = V_{in} + V_{if}
+\end{equation}
+
+So, calculating $V_{6final}$:
+\begin{equation}
+	V_{6}(t) = e^{\frac{-t}{R_{eq} C}} + A e^{-j phase(i)}
+\end{equation}
+
+\begin{figure}[H]
+    \includegraphics[width=0.5\linewidth]{5ex.eps}
+    \centering
+    \caption{Natural and Forced Superimposed}
+    \label{pha}
+\end{figure}
+
+
+
+
+\subsection{Frequency Response}
+\paragraph{}
+
+\par The graphs for phase and magnitude were plotted. The magnitude in dB is calculated with the help of the function abs and in a logarthmic scale, multiplied by the 20. The phase in degrees is calculated with the function angle and there has to be a conversion from rad to degrees.
+\begin{equation}
+	Z=\frac{1}{j 2 \pi f C}
+\end{equation}
+
+with $f$ being a logharitmic scale vector from -6 to 6 with 200 entries.
+
+The system used was:
+
+$$
+\begin{cases} 
+	V_1 = V_s \\ 
+	V_d = V_5 -V_8 \\
+	V_b = V_2 - V_5 \\
+	\frac{V_7 K_d}{R_6} = V_d \\ 
+	\frac{V_1 - V_2}{R_1} + \frac{V_3 - V_2}{R_2} - \frac{V_5 - V_2}{R_3}  = 0 \\
+	\frac{V_2 - V_3}{R_2} - K_b V_b = 0 \\
+	\frac{-V_7}{R_6} -\frac{V_8 - V_7}{R_7} = 0 \\
+	\frac{V_7 - V_8}{R_7} - \frac{V_5}{R_4} + \frac{V_6 - V_5}{R_5} + \frac{V_2 - V_5}{R_3} - \frac{V_6 - V_8}{Z}= 0 \\
+	\frac{V_5 - V_6}{R_5} + K_b V_b + \frac{V_8 - V_6}{Z}= 0 
+\label{system 6}
+\end{cases}
+$$
+
+The complex variables $Vsfre(k)$, $Vxfre(k)$ and $V6fre(k)$ were assigned and equalled to the just calculated $V_1$, $V_6 - V_8$ and $V_6$, respectively. 
+
+The two following graphics were plotted using a base 10 logarithmic scale for frequencies, the logarithmic value of the $abs$ of the variables stated above and the angle of these complex variables, converted to degrees.
+
+
+
+\begin{figure}[H]
+    \includegraphics[width=0.5\linewidth]{ex6mag.eps}
+    \centering
+    \caption{Magnitude (dB) / Frequency (Hz)}
+    \label{mag}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=0.5\linewidth]{ex6pha.eps}
+    \centering
+    \caption{Phase (degrees) / Frequency (Hz)}
+    \label{pha}
+\end{figure}
+
+
