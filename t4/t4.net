@@ -9,7 +9,7 @@ Vin in 0 0 ac 1.0 sin(0 10m 1k)
 Rin in in2 100
 
 * input coupling capacitor
-Ci in2 base 1u
+Ci in2 base 1m
 
 * bias circuit
 R1 vcc base 80k
@@ -21,7 +21,7 @@ Rc vcc coll 1k
 Re emit 0 100
 
 * bypass capacitor
-Cb emit 0 1u
+Cb emit 0 1m
 
 
 * output stage
@@ -44,14 +44,20 @@ print all
 * time analysis
 tran 1e-5 1e-2
 plot v(coll)
+hardcopy vo1.ps vdb(coll)
+
 
 * frequency analysis
 ac dec 10 10 100MEG
 plot vdb(coll)
 plot vp(coll)
+hardcopy vo1f.ps vdb(coll)
+
+
 
 plot vdb(out)
 plot vp(out)
+hardcopy vo2f.ps vdb(coll)
 
 *input impedance in kohm
 print v(in2)[40]/(v(in)[40]-v(in2)[40])/100*1000
