@@ -61,7 +61,7 @@ hardcopy vo2f.ps vdb(coll)
 *input impedance in kohm
 *print all
 
-plot abs(v(in2)[40]/vin#branch[40]/(-1000))
+plot abs(v(in2)/vin#branch/(-1000))
 print v(in2)[40]/vin#branch[40]/(-1000)
 
 *need a different setup to measure output impedance
