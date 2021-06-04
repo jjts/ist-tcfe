@@ -71,7 +71,7 @@ print all
 * time analysis
 tran 1e-5 1e-2
 plot v(out)
-hardcopy vo1.ps vdb(out)
+hardcopy vo1.ps v(out)
 
 
 * frequency analysis
@@ -81,7 +81,7 @@ plot vp(out)
 hardcopy vo1f.ps vdb(out)
 
 *input impedance in kohm
-print v(in)[40]/R1[i]/1000
+*print v(in)[40]/R1[i]/1000
 
 *need a different setup to measure output impedance
 
